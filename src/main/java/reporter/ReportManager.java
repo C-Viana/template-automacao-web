@@ -2,7 +2,9 @@ package reporter;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.Calendar;
 import java.util.Date;
 
 import com.relevantcodes.extentreports.ExtentReports;
@@ -12,6 +14,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+import common.StaticResources;
 import driver.Driver;
 import io.cucumber.java.Status;
 
@@ -21,14 +24,20 @@ public class ReportManager {
     private static ExtentReports reporter;
     private static ExtentTest test;
     private static int iterator = 0;
-    private static String ROOT_PATH = "C:/Test_Results/";
+    private static String ROOT_PATH = "";
     private static String images_path = "";
 
     public static void setResultPath(String featureName, String scenarioName) {
-        ROOT_PATH += getFeatureName(featureName) +"/"+ scenarioName.replaceAll("[\\/?\\*:<>]","");
+        String date = new SimpleDateFormat("dd-MM-yyyy").format(Date.from(Instant.now()));
+        if(!StaticResources.suite_test) {
+            ROOT_PATH = "C:/Test_Results/" + date + "/" + getFeatureName(featureName) + "/" + scenarioName.replaceAll("[\\/?\\*:<>]", "");
+        }
+        else
+            if(reporter == null)
+                ROOT_PATH = "C:/Test_Results/" + date + "/" + "Suite_Run_" + new SimpleDateFormat("HH-mm").format(Calendar.getInstance().getTime());
     }
 
-    public static void startReport( String featureName ) {
+    public static void startReport() {
         if( reporter != null ) return;
         reporter = new ExtentReports( ROOT_PATH + "/results.html", true );
     }
@@ -43,13 +52,14 @@ public class ReportManager {
         test.setEndedTime(Date.from(Instant.now()));
         reporter.endTest(test);
         test = null;
-        iterator = 0;
-        images_path = "";
+        if (!StaticResources.suite_test)
+            iterator = 0;
     }
 
     public static void endReport() {
         reporter.flush();
         reporter.close();
+        reporter = null;
     }
 
     public static void setTestStep( Status status, String stepLog ) {

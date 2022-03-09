@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -75,7 +77,7 @@ public class ReportManager {
             fos.write(image);
         }
         catch(Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(ReportManager.class.getName()).log(Level.WARNING, "Erro ao realizar captura de tela na geração de evidência de teste", e);
         }
         return file.getPath();
     }

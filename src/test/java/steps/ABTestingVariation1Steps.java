@@ -21,6 +21,6 @@ public class ABTestingVariation1Steps {
         General.waitToBeVisible( page.getTitle(), 10 );
         Assert.assertTrue( page.getTitleExpectedA().equals(page.getTitle().getText().trim().toString()) || page.getTitleExpectedB().equals(page.getTitle().getText().trim().toString()) );
         Assert.assertEquals(page.getInformationTextExpected(), page.getInformation().getText().trim());
-        ReportManager.setTestStep( General.scenario.getStatus(), "Então verei a página AB Test Variation" );
+        ReportManager.setTestStep( General.getScenario().getStatus(), "Então verei a página AB Test Variation" );
     }
 }

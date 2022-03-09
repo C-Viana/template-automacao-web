@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 
 @CucumberOptions (
     plugin = {"pretty", "html:target/cucumber"},
-    features = "src/main/java/features",
+    features = "src/test/java/features",
     glue = {"steps"},
     snippets = SnippetType.CAMELCASE,
     dryRun = false,

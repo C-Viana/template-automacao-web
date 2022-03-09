@@ -15,8 +15,4 @@ buildNumber.properties
 .vscode
 *.class
 testResults/
-<<<<<<< HEAD
 runSonarQube.bat
-=======
-runSonarQube.bat
->>>>>>> a496bee4a122f5af4d2876239dcd8e092191c24e

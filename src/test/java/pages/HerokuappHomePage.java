@@ -22,14 +22,6 @@ public class HerokuappHomePage {
         return obj.pageSubtitle.getText().trim();
     }
 
-    public String getABTestingLinkText() {
-        return obj.linkABTesting.getText().trim();
-    }
-
-    public void clickABTestingLink() {
-        obj.linkABTesting.click();
-    }
-
     public String getTitleExpected() {
         return obj.txtPageTitleExpected;
     }
@@ -38,7 +30,39 @@ public class HerokuappHomePage {
         return obj.txtPageSubtitleExpected;
     }
 
-    public String getLinkTextExpected() {
+    public String getABTestingLinkText() {
+        return obj.linkABTesting.getText().trim();
+    }
+
+    public void clickABTestingLink() {
+        obj.linkABTesting.click();
+    }
+
+    public String getLinkTextABTestingExpected() {
         return obj.linkTextABTestingExpected;
+    }
+
+    public String getAddRemoveElementsText() {
+        return obj.linkAddRemoveElements.getText().trim();
+    }
+
+    public void clickAddRemoveElements() {
+        obj.linkAddRemoveElements.click();
+    }
+
+    public String getLinkTextAddRemoveElementsExpected() {
+        return obj.linkTextAddRemoveElementsExpected;
+    }
+
+    public String getBasicAuthText() {
+        return obj.linkBasicAuth.getText().trim();
+    }
+
+    public void clickBasicAuth() {
+        obj.linkBasicAuth.click();
+    }
+
+    public String getLinkTextBasicAuthExpected() {
+        return obj.linkTextBasicAuthExpected;
     }
 }

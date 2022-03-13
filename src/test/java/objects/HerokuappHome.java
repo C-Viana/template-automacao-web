@@ -17,5 +17,13 @@ public class HerokuappHome
     public WebElement linkABTesting;
     public String linkTextABTestingExpected = "A/B Testing";
 
+    @FindBy(xpath = "//li[2]/a")
+    public WebElement linkAddRemoveElements;
+    public String linkTextAddRemoveElementsExpected = "Add/Remove Elements";
+
+    @FindBy(xpath = "//li[3]/a")
+    public WebElement linkBasicAuth;
+    public String linkTextBasicAuthExpected = "Basic Auth";
+
     
 }

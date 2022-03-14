@@ -3,6 +3,10 @@ package common;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -242,6 +246,20 @@ public class General {
     public static Alert getAlert(Integer timeInSeconds) {
         return new WebDriverWait(Driver.get(), Duration.ofSeconds((timeInSeconds == null) ? DEFAULT_WAIT_TIME
                 : timeInSeconds)).until(ExpectedConditions.alertIsPresent() );
+    }
+
+    public static int getStatusCodeFromURL(String targetUrl) {
+        try {
+            HttpURLConnection conn = (HttpURLConnection) new URL(targetUrl).openConnection();
+            conn.setRequestMethod("GET");
+            return conn.getResponseCode();
+        }
+        catch (MalformedURLException e) {
+            return 0;
+        }
+        catch (IOException e) {
+            return 0;
+        }
     }
 
 }

@@ -25,23 +25,30 @@ public class HerokuappHomeSteps {
 
     @When("acessar o link AB Testing")
     public void acessarOLinkABTesting() {
-        Assert.assertEquals(home.getABTestingLinkText(), home.getLinkTextABTestingExpected());
+        Assert.assertEquals(home.getLinkTextABTestingExpected(), home.getABTestingLinkText());
         home.clickABTestingLink();
         ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link A/B Testing");
     }
 
     @When("acessar o link Add-Remove Elements")
     public void acessarOLinkAddRemoveElements() {
-        Assert.assertEquals(home.getAddRemoveElementsText(), home.getLinkTextAddRemoveElementsExpected());
+        Assert.assertEquals(home.getLinkTextAddRemoveElementsExpected(), home.getAddRemoveElementsText());
         home.clickAddRemoveElements();
         ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Add/Remove Elements");
     }
 
     @When("acessar o link Basic Auth")
     public void acessarOLinkBasicAuth() {
-        Assert.assertEquals(home.getBasicAuthText(), home.getLinkTextBasicAuthExpected());
+        Assert.assertEquals(home.getLinkTextBasicAuthExpected(), home.getBasicAuthText());
         home.clickBasicAuth();
         ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Basic Auth");
+    }
+
+    @When("acessar o link Broken Images")
+    public void acessarOLinkBrokenImages() {
+        Assert.assertEquals(home.getLinkTextBrokenImagesExpected(), home.getBrokenImagesText());
+        home.clickBrokenImages();
+        ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Broken Images");
     }
 
 }

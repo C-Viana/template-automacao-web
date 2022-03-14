@@ -65,4 +65,16 @@ public class HerokuappHomePage {
     public String getLinkTextBasicAuthExpected() {
         return obj.linkTextBasicAuthExpected;
     }
+
+    public String getBrokenImagesText() {
+        return obj.linkBrokenImages.getText().trim();
+    }
+
+    public void clickBrokenImages() {
+        obj.linkBrokenImages.click();
+    }
+
+    public String getLinkTextBrokenImagesExpected() {
+        return obj.linkTextBrokenImagesExpected;
+    }
 }

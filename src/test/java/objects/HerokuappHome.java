@@ -25,5 +25,9 @@ public class HerokuappHome
     public WebElement linkBasicAuth;
     public String linkTextBasicAuthExpected = "Basic Auth";
 
+    @FindBy(xpath = "//li[4]/a")
+    public WebElement linkBrokenImages;
+    public String linkTextBrokenImagesExpected = "Broken Images";
+
     
 }

@@ -3,15 +3,15 @@ package objects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class BasicAuth {
+public class DigestAuthentication {
     
-    @FindBy( tagName = "body" )
+    @FindBy( css = "div.error-code" )
     protected WebElement pageTextNotAuthorized;
-    protected String txtExpectedNotAuthorized = "Not authorized";
+    protected String txtExpectedNotAuthorized = "HTTP ERROR 401";
 
     @FindBy(tagName = "h3")
     protected WebElement pageTitle;
-    protected String txtExpectedTitle = "Basic Auth";
+    protected String txtExpectedTitle = "Digest Auth";
 
     @FindBy( tagName = "p" )
     protected WebElement pageInformation;

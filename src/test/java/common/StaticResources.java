@@ -13,7 +13,7 @@ public class StaticResources {
     public static final String CHROMEDRIVERPROPERTY = "webdriver.chrome.driver";
 
     // DRIVERS' PATH
-    public static final String CHROME_98 = "C:/Desenvolvimento/WebDrivers/chromedriver_98.exe";
+    public static final String CHROME_98 = "C:/Desenvolvimento/WebDrivers/chromedriver_102.exe";
 
     public static boolean suite_test = false;
 }

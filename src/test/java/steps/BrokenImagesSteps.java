@@ -1,7 +1,6 @@
 package steps;
 
 import common.General;
-import pages.BasicAuthPage;
 import pages.BrokenImagesPage;
 import reporter.ReportManager;
 

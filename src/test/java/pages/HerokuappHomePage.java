@@ -5,76 +5,181 @@ import objects.HerokuappHome;
 
 import org.openqa.selenium.support.PageFactory;
 
-public class HerokuappHomePage {
+public class HerokuappHomePage extends HerokuappHome {
     
-    public HerokuappHome obj = null;
-
     public HerokuappHomePage() {
-        obj = new HerokuappHome();
-        PageFactory.initElements( Driver.get(), obj );
+        PageFactory.initElements( Driver.get(), this );
     }
 
     public String getTitle() {
-        return obj.pageTitle.getText().trim();
+        return pageTitle.getText().trim();
     }
 
     public String getSubtitle() {
-        return obj.pageSubtitle.getText().trim();
+        return pageSubtitle.getText().trim();
     }
 
     public String getTitleExpected() {
-        return obj.txtPageTitleExpected;
+        return txtPageTitleExpected;
     }
 
     public String getSubtitleExpected() {
-        return obj.txtPageSubtitleExpected;
+        return txtPageSubtitleExpected;
     }
 
     public String getABTestingLinkText() {
-        return obj.linkABTesting.getText().trim();
+        return linkABTesting.getText().trim();
     }
 
     public void clickABTestingLink() {
-        obj.linkABTesting.click();
+        linkABTesting.click();
     }
 
     public String getLinkTextABTestingExpected() {
-        return obj.linkTextABTestingExpected;
+        return linkTextABTestingExpected;
     }
 
     public String getAddRemoveElementsText() {
-        return obj.linkAddRemoveElements.getText().trim();
+        return linkAddRemoveElements.getText().trim();
     }
 
     public void clickAddRemoveElements() {
-        obj.linkAddRemoveElements.click();
+        linkAddRemoveElements.click();
     }
 
     public String getLinkTextAddRemoveElementsExpected() {
-        return obj.linkTextAddRemoveElementsExpected;
+        return linkTextAddRemoveElementsExpected;
     }
 
     public String getBasicAuthText() {
-        return obj.linkBasicAuth.getText().trim();
+        return linkBasicAuth.getText().trim();
     }
 
     public void clickBasicAuth() {
-        obj.linkBasicAuth.click();
+        linkBasicAuth.click();
     }
 
     public String getLinkTextBasicAuthExpected() {
-        return obj.linkTextBasicAuthExpected;
+        return linkTextBasicAuthExpected;
     }
 
     public String getBrokenImagesText() {
-        return obj.linkBrokenImages.getText().trim();
+        return linkBrokenImages.getText().trim();
     }
 
     public void clickBrokenImages() {
-        obj.linkBrokenImages.click();
+        linkBrokenImages.click();
     }
 
     public String getLinkTextBrokenImagesExpected() {
-        return obj.linkTextBrokenImagesExpected;
+        return linkTextBrokenImagesExpected;
+    }
+
+    public String getChallengingDOMText() {
+        return linkChallengingDOM.getText().trim();
+    }
+
+    public void clickChallengingDOM() {
+        linkChallengingDOM.click();
+    }
+
+    public String getLinkTextChallengingDOMExpected() {
+        return linkTextChallengingDOMExpected;
+    }
+
+    public String getCheckboxesText() {
+        return linkCheckboxes.getText().trim();
+    }
+
+    public void clickCheckboxes() {
+        linkCheckboxes.click();
+    }
+
+    public String getLinkTextCheckboxesExpected() {
+        return linkTextCheckboxesExpected;
+    }
+
+    public String getContextMenuText() {
+        return linkContextMenu.getText().trim();
+    }
+
+    public void clickContextMenu() {
+        linkContextMenu.click();
+    }
+
+    public String getLinkTextContextMenuExpected() {
+        return linkTextContextMenuExpected;
+    }
+
+    public String getDigestAuthenticationText() {
+        return linkDigestAuthentication.getText().trim();
+    }
+
+    public void clickDigestAuthentication() {
+        linkDigestAuthentication.click();
+    }
+
+    public String getLinkTextDigestAuthenticationExpected() {
+        return linkTextDigestAuthenticationExpected;
+    }
+
+    public String getDisappearingElementsText() {
+        return linkDisappearingElements.getText().trim();
+    }
+
+    public void clickDisappearingElements() {
+        linkDisappearingElements.click();
+    }
+
+    public String getLinkTextDisappearingElementsExpected() {
+        return linkTextDisappearingElementsExpected;
+    }
+
+    public String getDragAndDropText() {
+        return linkDragAndDrop.getText().trim();
+    }
+
+    public void clickDragAndDrop() {
+        linkDragAndDrop.click();
+    }
+
+    public String getLinkTextDragAndDropExpected() {
+        return linkTextDragAndDropExpected;
+    }
+
+    public String getDropdownText() {
+        return linkDropdown.getText().trim();
+    }
+
+    public void clickDropdown() {
+        linkDropdown.click();
+    }
+
+    public String getLinkTextDropdownExpected() {
+        return linkTextDropdownExpected;
+    }
+
+    public String getDynamicContentText() {
+        return linkDynamicContent.getText().trim();
+    }
+
+    public void clickDynamicContent() {
+        linkDynamicContent.click();
+    }
+
+    public String getLinkTextDynamicContentExpected() {
+        return linkTextDynamicContentExpected;
+    }
+
+    public String getDynamicControlsText() {
+        return linkDynamicControls.getText().trim();
+    }
+
+    public void clickDynamicControls() {
+        linkDynamicControls.click();
+    }
+
+    public String getLinkTextDynamicControlsExpected() {
+        return linkTextDynamicControlsExpected;
     }
 }

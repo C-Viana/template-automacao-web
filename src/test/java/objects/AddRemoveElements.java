@@ -8,15 +8,15 @@ import org.openqa.selenium.support.FindBy;
 public class AddRemoveElements {
     
     @FindBy( tagName = "h3" )
-    public WebElement pageTitle;
-    public String txtPageTitleExpected = "Add/Remove Elements";
+    protected WebElement pageTitle;
+    protected String txtPageTitleExpected = "Add/Remove Elements";
 
     @FindBy( css = "div.example>button" )
-    public WebElement buttonAddElement ;
-    public String txtButtonAddElement = "Add Element";
+    protected WebElement buttonAddElement ;
+    protected String txtButtonAddElement = "Add Element";
 
     @FindBy(css = "div>button.added-manually")
-    public List<WebElement> buttonRemove;
-    public String txtButtonRemove = "Delete";
+    protected List<WebElement> buttonRemove;
+    protected String txtButtonRemove = "Delete";
 
 }

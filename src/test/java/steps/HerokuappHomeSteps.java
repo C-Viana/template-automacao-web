@@ -51,4 +51,67 @@ public class HerokuappHomeSteps {
         ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Broken Images");
     }
 
+    @When("acessar o link Challenging DOM")
+    public void acessarOLinkChallengingDOM() {
+        Assert.assertEquals(home.getLinkTextChallengingDOMExpected(), home.getChallengingDOMText());
+        home.clickChallengingDOM();
+        ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Challenging DOM");
+    }
+
+    @When("acessar o link Checkboxes")
+    public void acessarOLinkCheckboxes() {
+        Assert.assertEquals(home.getLinkTextCheckboxesExpected(), home.getCheckboxesText());
+        home.clickCheckboxes();
+        ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Challenging DOM");
+    }
+
+    @When("acessar o link Context Menu")
+    public void acessarOLinkContextMenu() {
+        Assert.assertEquals(home.getLinkTextContextMenuExpected(), home.getContextMenuText());
+        home.clickContextMenu();
+        ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Context Menu");
+    }
+
+    @When("acessar o link Digest Authentication")
+    public void acessarOLinkDigestAuthentication() {
+        Assert.assertEquals(home.getLinkTextDigestAuthenticationExpected(), home.getDigestAuthenticationText());
+        home.clickDigestAuthentication();
+        ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Digest Authentication");
+    }
+
+    @When("acessar o link Disappearing Elements")
+    public void acessarOLinkDisappearingElements() {
+        Assert.assertEquals(home.getLinkTextDisappearingElementsExpected(), home.getDisappearingElementsText());
+        home.clickDisappearingElements();
+        ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Disappearing Elements");
+    }
+
+    @When("acessar o link Drag and Drop")
+    public void acessarOLinkDragAndDrop() {
+        Assert.assertEquals(home.getLinkTextDragAndDropExpected(), home.getDragAndDropText());
+        home.clickDragAndDrop();
+        ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Drag and Drop");
+    }
+
+    @When("acessar o link Dropdown")
+    public void acessarOLinkDropdown() {
+        Assert.assertEquals(home.getLinkTextDropdownExpected(), home.getDropdownText());
+        home.clickDropdown();
+        ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Dropdown");
+    }
+
+    @When("acessar o link Dynamic Content")
+    public void acessarOLinkDynamicContent() {
+        Assert.assertEquals(home.getLinkTextDynamicContentExpected(), home.getDynamicContentText());
+        home.clickDynamicContent();
+        ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Dynamic Content");
+    }
+
+    @When("acessar o link Dynamic Controls")
+    public void acessarOLinkDynamicControls() {
+        Assert.assertEquals(home.getLinkTextDynamicControlsExpected(), home.getDynamicControlsText());
+        home.clickDynamicControls();
+        ReportManager.setTestStep(General.getScenario().getStatus(), "Quando acessar o link Dynamic Controls");
+    }
+
 }

@@ -3,22 +3,35 @@ package common;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import driver.Driver;
 import io.cucumber.java.Scenario;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
+import net.sourceforge.tess4j.util.LoadLibs;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class General {
@@ -28,6 +41,8 @@ public class General {
     private static final int DEFAULT_WAIT_TIME = 10;
     private static String feature;
     private static Scenario scenario;
+    private static Point chromePosition;
+    private static Dimension chromeDimensions;
 
     private General() {
         throw new IllegalStateException("Erro para iniciar a classe General.");
@@ -110,6 +125,15 @@ public class General {
         ((JavascriptExecutor) Driver.get()).executeScript("document.querySelector('a.sb_pagN').scrollIntoView();", element);
     }
 
+    public static String getTagAttributesByJavaScript(WebElement element) {
+        String test = ((JavascriptExecutor) Driver.get()).executeScript("return arguments[0].attributes;", element).toString();
+        return test;
+        // driver.execute_script('var items = {}; for (index = 0; index <
+        // arguments[0].attributes.length; ++index) {
+        // items[arguments[0].attributes[index].name] =
+        // arguments[0].attributes[index].value }; return items;', element)
+    }
+
     /**
      * Este método utiliza a classe Robot do Java para simular interações do teclado
      * ao navegador. <br>
@@ -126,6 +150,43 @@ public class General {
             }
         } catch (AWTException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void setChromePosition() {
+        chromePosition = Driver.get().manage().window().getPosition();
+    }
+
+    public static void setChromeDimensions() {
+        chromeDimensions = Driver.get().manage().window().getSize();
+    }
+
+    public static Point getChromePosition() {
+        return chromePosition;
+    }
+
+    public static Dimension getChromeDimensions() {
+        return chromeDimensions;
+    }
+
+    public static void refreshPage() {
+        Driver.get().navigate().refresh();
+    }
+
+    public static Point getElementCenter( WebElement element ) {
+        int width = element.getSize().width;
+        int height = element.getSize().height;
+        return new Point( (width/2), (height/2) );
+    }
+
+    //TODO: tratar este problema -> nao funciona
+    public static void dragElementTo( WebElement element, WebElement destination ) {
+        try {
+            //Point posB = General.getElementCenter(destination);
+            new Actions(Driver.get()).dragAndDrop(element, destination).build().perform();
+        } catch (Exception e) {
+            System.out.println("Could not drag element!");
+            throw e;
         }
     }
 
@@ -238,6 +299,38 @@ public class General {
     }
 
     /**
+     * 
+     * 
+     * @param element
+     * @param timeInSeconds
+     */
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public static Object waitToBeVisibleIgnoringExceptions(WebElement element, Integer timeInSeconds) {
+        List<Class> exceptions = new ArrayList<Class>();
+        exceptions.add(StaleElementReferenceException.class);
+        exceptions.add(NoSuchElementException.class);
+        exceptions.add(NotFoundException.class);
+
+        try {
+            return new FluentWait(Driver.get())
+                    .withTimeout(Duration.ofSeconds((timeInSeconds == null) ? DEFAULT_WAIT_TIME : timeInSeconds))
+                    .pollingEvery(Duration.ofSeconds(1))
+                    .ignoreAll(exceptions).until(ExpectedConditions.visibilityOf(element));
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static boolean elementExists(WebElement element) {
+        try {
+            return element.isDisplayed();
+        }
+        catch (StaleElementReferenceException | NoSuchElementException ex) {
+            return false;
+        }
+    }
+
+    /**
      * Retorna um objeto web Alert após a espera condicionada. 
      * Caso o tempo informado seja null, será considerado o tempo definido como padrão. 
      * @param timeInSeconds
@@ -246,6 +339,10 @@ public class General {
     public static Alert getAlert(Integer timeInSeconds) {
         return new WebDriverWait(Driver.get(), Duration.ofSeconds((timeInSeconds == null) ? DEFAULT_WAIT_TIME
                 : timeInSeconds)).until(ExpectedConditions.alertIsPresent() );
+    }
+
+    public static void setDefaultContext() {
+        Driver.get().switchTo().defaultContent();
     }
 
     public static int getStatusCodeFromURL(String targetUrl) {
@@ -260,6 +357,23 @@ public class General {
         catch (IOException e) {
             return 0;
         }
+    }
+
+    public static String getTextFromImage(BufferedImage img) {
+        Tesseract tesseract = new Tesseract();
+        try {
+            //tesseract.setLanguage("por");
+            tesseract.setDatapath(LoadLibs.extractTessResources("tessdata").getAbsolutePath());
+            return tesseract.doOCR(img);
+        }
+        catch (TesseractException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static void rightClickElement(WebElement element) {
+        new Actions(Driver.get()).contextClick(element).perform();
     }
 
 }

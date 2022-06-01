@@ -18,9 +18,3 @@ Feature: Basic Auth
         When acessar o link Basic Auth
         Then realizo a autenticação pela URL
         And valido a tela a tela de autenticação bem sucedida
-
-    Scenario: Validar autenticação via alert
-        Given que abri a página Herokuapp
-        When acessar o link Basic Auth
-        Then realizo a autenticação por digest
-        And valido a tela a tela de autenticação bem sucedida

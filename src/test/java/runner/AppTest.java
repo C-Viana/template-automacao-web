@@ -13,7 +13,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
     snippets = SnippetType.CAMELCASE,
     dryRun = false,
     stepNotifications = true
-    ,tags = "@test_4"
+    ,tags = "@Test13B"
 )
 @RunWith(Cucumber.class)
 public class AppTest 

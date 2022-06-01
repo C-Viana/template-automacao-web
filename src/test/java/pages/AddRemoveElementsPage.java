@@ -8,37 +8,34 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class AddRemoveElementsPage {
-
-    private AddRemoveElements obj = null;
+public class AddRemoveElementsPage extends AddRemoveElements {
 
     public AddRemoveElementsPage() {
-    	obj = new AddRemoveElements();
-        PageFactory.initElements( Driver.get(), obj );
+        PageFactory.initElements( Driver.get(), this );
     }
 
     public WebElement getTitle() {
-        return obj.pageTitle;
+        return pageTitle;
     }
 
     public String getTitleExpected() {
-        return obj.txtPageTitleExpected;
+        return txtPageTitleExpected;
     }
 
     public WebElement getButtonAddElement() {
-        return obj.buttonAddElement;
+        return buttonAddElement;
     }
 
     public String getTextButtonAddElement() {
-        return obj.txtButtonAddElement;
+        return txtButtonAddElement;
     }
 
     public List<WebElement> getButtonRemove() {
-        return obj.buttonRemove;
+        return buttonRemove;
     }
 
     public String getButtonRemoveTextExpected() {
-        return obj.txtButtonRemove;
+        return txtButtonRemove;
     }
     
 }

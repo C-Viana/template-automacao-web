@@ -34,12 +34,6 @@ public class BasicAuthSteps {
         ReportManager.setTestStep(General.getScenario().getStatus(), "Então realizo a autenticação pela URL");
     }
 
-    @Then("realizo a autenticação por digest")
-    public void realizoAutenticacaoPorDigest() {
-        page.authenticateByBasicDigest("admin", "admin");
-        ReportManager.setTestStep(General.getScenario().getStatus(), "Então realizo a autenticação por digest");
-    }
-
     @And("valido a tela a tela com falha de autenticação")
     public void validoFalhaAutenticacao() {
         Assert.assertEquals(page.getTextExpectedPageNotAuthorized(), page.getTextPageNotAuthorized().getText().trim());

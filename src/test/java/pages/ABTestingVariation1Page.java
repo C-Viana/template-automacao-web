@@ -6,33 +6,30 @@ import objects.ABTestingVariation1;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class ABTestingVariation1Page {
-
-    private ABTestingVariation1 obj = null;
+public class ABTestingVariation1Page extends ABTestingVariation1 {
 
     public ABTestingVariation1Page() {
-    	obj = new ABTestingVariation1();
-        PageFactory.initElements( Driver.get(), obj );
+        PageFactory.initElements( Driver.get(), this );
     }
 
     public WebElement getTitle() {
-        return obj.pageTitle;
+        return pageTitle;
     }
 
     public String getTitleExpectedA() {
-        return obj.txtPageTitleExpectedA;
+        return txtPageTitleExpectedA;
     }
 
     public String getTitleExpectedB() {
-        return obj.txtPageTitleExpectedB;
+        return txtPageTitleExpectedB;
     }
 
     public WebElement getInformation() {
-        return obj.pageInformation;
+        return pageInformation;
     }
 
     public String getInformationTextExpected() {
-        return obj.txtPageInformation;
+        return txtPageInformation;
     }
     
 }

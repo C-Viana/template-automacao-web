@@ -40,13 +40,13 @@ public class DynamicContentSteps {
     @And("valido conteúdo estático")
     public void validoConteudoEstatico() {
         page.getLinkClickHere().click();
-        General.waitToBeVisible(page.getTitle(), 10);
+        General.waitFor(5);
 
         String[] oldImages = page.getImagesURL();
         String[] oldTexts = page.getTexts();
 
         General.refreshPage();
-        General.waitToBeVisible(page.getTitle(), 10);
+        General.waitFor(3);
 
         for (int i = 0; i < oldTexts.length; i++) {
             //System.out.println( oldTexts[i] + "\n" + page.getPhrases().get(i).getText()+"\n\n" );
@@ -56,9 +56,10 @@ public class DynamicContentSteps {
             else {
                 Assert.assertFalse("Textos comparados no parágrafo " + i + " são iguais.", oldTexts[i].equalsIgnoreCase(page.getPhrases().get(i).getText()));
             }
+            System.out.println("URL: " + oldImages[i]);
             Assert.assertTrue("URL da imagem " + i + " não corresponde aos valores esperados.", page.imageUrlMatches(oldImages[i]));
         }
-
+        System.out.println();
         ReportManager.setTestStep(General.getScenario().getStatus(), "E valido conteúdo estático");
     }
 

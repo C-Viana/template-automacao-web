@@ -13,12 +13,15 @@ public class ContextMenuSteps {
     private ContextMenuPage page = null;
     
     public ContextMenuSteps() {
+
         page = new ContextMenuPage();
     }
 
     @Then("valido a exibição do alert ao clicar com o botão direito na área marcada")
     public void validoExibicaoAlertClicarDireitoAreaMarcada() {
         General.waitToBeVisible(page.getTitle(), 6);
+        General.setChromePositionLocalVariable();
+        General.setChromeDimensionsLocalVariable();
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
         page.clickHotspotComponent();
         Assert.assertEquals(page.getAlertExpectedText(), page.getAlert().getText());

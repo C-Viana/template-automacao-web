@@ -15,11 +15,12 @@ public class DynamicContentPage extends DynamicContent {
         PageFactory.initElements( Driver.get(), this );
 
         imagesPath = new ArrayList<String>();
-        imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-1.jpg");
-        imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-2.jpg");
-        imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg");
-        imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-6.jpg");
-        imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-7.jpg");
+        imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-1.jpg"); // MARIO
+        imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-2.jpg"); // BOBA FETT
+        imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-3.jpg"); // Punisher
+        imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg"); // Harley Quinn
+        imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-6.jpg"); // STAR TROOPER
+        imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-7.jpg"); // ???
     }
 
     public WebElement getTitle() {

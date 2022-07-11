@@ -311,25 +311,27 @@ public class General {
     }
 
     /**
-     * Informar um ponto x e y para definir a posição da janela do browser.
+     * Atribui à variável General.chromePosition as coordenadas atuais da posição
+     * da janela do browser.
      * <br>
      * 
      * @param posX
      * @param posY
      */
-    public static void setChromePosition(int posX, int posY) {
-        chromePosition = new Point(posX, posY);
+    public static void setChromePositionLocalVariable() {
+        chromePosition = Driver.get().manage().window().getPosition();
     }
 
     /**
-     * Informar largura e altura para definir o tamanho da janela do browser.
+     * Atribui à variável General.chromeDimensions as coordenadas atuais das dimensões
+     * da janela do browser.
      * <br>
      * 
      * @param width
      * @param height
      */
-    public static void setChromeDimensions(int width, int height) {
-        chromeDimensions = new Dimension(width, height);
+    public static void setChromeDimensionsLocalVariable() {
+        chromeDimensions = Driver.get().manage().window().getSize();
     }
 
     /**

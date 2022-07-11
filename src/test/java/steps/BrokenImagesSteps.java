@@ -25,11 +25,14 @@ public class BrokenImagesSteps {
 
     @And("valido as imagens em tela")
     public void validoImagensTela() {
-        page.getImages().stream().forEach( i -> {
-            int httpResponseCode = General.getStatusCodeFromURL(i.getAttribute("src"));
-            System.out.println("IMAGEM: " + i.getAttribute("src") + "\tCODE: " + httpResponseCode );
-            Assert.assertEquals( 200, httpResponseCode );
-        });
+        for (int j = 0; j < page.getImages().size(); j++) {
+            int httpResponseCode = General.getStatusCodeFromURL(page.getImages().get(j).getAttribute("src"));
+            System.out.println("IMAGEM: " + page.getImages().get(j).getAttribute("src") + "\tCODE: " + httpResponseCode);
+            if(j == page.getImages().size()-1)
+                Assert.assertEquals(200, httpResponseCode);
+            else
+                Assert.assertEquals(404, httpResponseCode);
+        }
         ReportManager.setTestStep(General.getScenario().getStatus(), "E valido as imagens em tela");
     }
 

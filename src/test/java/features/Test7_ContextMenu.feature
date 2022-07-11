@@ -1,4 +1,4 @@
-
+@Test7
 Feature: Context Menu
 @Test7A
     Scenario: Validar clique direito e exibição de alert

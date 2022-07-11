@@ -25,7 +25,9 @@ public class DragAndDropSteps {
 
     @And("arrasto o componente A para a posição do componente B")
     public void arrastoComponenteAParaPosicaoComponenteB() {
-        General.dragElementTo(page.getBoxA(), page.getBoxB());
+        //General.dragElementTo(page.getBoxA(), page.getBoxB());
+        General.waitFor(3);
+        General.dragAndDropSikulix("DragAndDrop_A.png", "DragAndDrop_B.png");
         Assert.assertEquals(page.getExpectedTextBoxB(), page.getTextBoxA());
         Assert.assertEquals(page.getExpectedTextBoxA(), page.getTextBoxB());
         ReportManager.setTestStep(General.getScenario().getStatus(), "E arrasto o componente 'A' para a posição do componente 'B'");

@@ -182,4 +182,125 @@ public class HerokuappHomePage extends HerokuappHome {
     public String getLinkTextDynamicControlsExpected() {
         return linkTextDynamicControlsExpected;
     }
+
+    public String getDynamicLoadingText() {
+        return linkDynamicLoading.getText().trim();
+    }
+
+    public void clickDynamicLoading() {
+        linkDynamicLoading.click();
+    }
+
+    public String getLinkTextDynamicLoadingExpected() {
+        return linkTextDynamicLoadingExpected;
+    }
+
+    public String getEntryAdText() {
+        return linkEntryAd.getText().trim();
+    }
+
+    public void clickEntryAd() {
+        linkEntryAd.click();
+    }
+
+    public String getLinkTextEntryAdExpected() {
+        return linkTextEntryAdExpected;
+    }
+
+    public String getExitIntentText() {
+        return linkExitIntent.getText().trim();
+    }
+
+    public void clickExitIntent() {
+        linkExitIntent.click();
+    }
+
+    public String getLinkTextExitIntentExpected() {
+        return linkTextExitIntentExpected;
+    }
+
+    public String getFileDownloadText() {
+        return linkFileDownload.getText().trim();
+    }
+
+    public void clickFileDownload() {
+        linkFileDownload.click();
+    }
+
+    public String getLinkTextFileDownloadExpected() {
+        return linkTextFileDownloadExpected;
+    }
+
+    public String getFileUploadText() {
+        return linkFileUpload.getText().trim();
+    }
+
+    public void clickFileUpload() {
+        linkFileUpload.click();
+    }
+
+    public String getLinkTextFileUploadExpected() {
+        return linkTextFileUploadExpected;
+    }
+
+    public String getFramesText() {
+        return linkFrames.getText().trim();
+    }
+
+    public void clickFrames() {
+        linkFrames.click();
+    }
+
+    public String getLinkTextFramesExpected() {
+        return linkTextFramesExpected;
+    }
+
+    public String getHorizontalSliderText() {
+        return linkHorizontalSlider.getText().trim();
+    }
+
+    public void clickHorizontalSlider() {
+        linkHorizontalSlider.click();
+    }
+
+    public String getLinkTextHorizontalSliderExpected() {
+        return linkTextHorizontalSliderExpected;
+    }
+
+    public String getHoverText() {
+        return linkHover.getText().trim();
+    }
+
+    public void clickHover() {
+        linkHover.click();
+    }
+
+    public String getLinkTextHoverExpected() {
+        return linkTextHoverExpected;
+    }
+
+    public String getJQueryUIText() {
+        return linkJQueryUI.getText().trim();
+    }
+
+    public void clickJQueryUI() {
+        linkJQueryUI.click();
+    }
+
+    public String getLinkTextJQueryUIExpected() {
+        return linkTextJQueryUIExpected;
+    }
+
+    public String getJavaScriptAlertsText() {
+        return linkJavaScriptAlerts.getText().trim();
+    }
+
+    public void clickJavaScriptAlerts() {
+        linkJavaScriptAlerts.click();
+    }
+
+    public String getLinkTextJavaScriptAlertsExpected() {
+        return linkTextJavaScriptAlertsExpected;
+    }
+    
 }

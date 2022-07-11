@@ -13,7 +13,7 @@ public class Driver {
 
     public static WebDriver get() {
         if( driver == null ) {
-            System.setProperty(StaticResources.CHROMEDRIVERPROPERTY, StaticResources.CHROME_98);
+            System.setProperty(StaticResources.CHROMEDRIVERPROPERTY, StaticResources.CHROME_DRIVER);
             driver = new ChromeDriver();
             driver.manage().timeouts().pageLoadTimeout( Duration.ofSeconds(50) );
         }

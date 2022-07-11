@@ -65,5 +65,45 @@ public class HerokuappHome
     protected WebElement linkDynamicControls;
     protected String linkTextDynamicControlsExpected = "Dynamic Controls";
 
+    @FindBy(xpath = "//li[14]/a")
+    protected WebElement linkDynamicLoading;
+    protected String linkTextDynamicLoadingExpected = "Dynamic Loading";
+
+    @FindBy(xpath = "//li[15]/a")
+    protected WebElement linkEntryAd;
+    protected String linkTextEntryAdExpected = "Entry Ad";
+
+    @FindBy(xpath = "//li[16]/a")
+    protected WebElement linkExitIntent;
+    protected String linkTextExitIntentExpected = "Exit Intent";
+
+    @FindBy(xpath = "//li[17]/a")
+    protected WebElement linkFileDownload;
+    protected String linkTextFileDownloadExpected = "File Download";
+
+    @FindBy(xpath = "//li[18]/a")
+    protected WebElement linkFileUpload;
+    protected String linkTextFileUploadExpected = "File Upload";
+
+    @FindBy(xpath = "//li[22]/a")
+    protected WebElement linkFrames;
+    protected String linkTextFramesExpected = "Frames";
+
+    @FindBy(xpath = "//li[24]/a")
+    protected WebElement linkHorizontalSlider;
+    protected String linkTextHorizontalSliderExpected = "Horizontal Slider";
+
+    @FindBy(xpath = "//li[25]/a")
+    protected WebElement linkHover;
+    protected String linkTextHoverExpected = "Hovers";
+
+    @FindBy(xpath = "//li[28]/a")
+    protected WebElement linkJQueryUI;
+    protected String linkTextJQueryUIExpected = "JQuery UI Menus";
+
+    @FindBy(xpath = "//li[29]/a")
+    protected WebElement linkJavaScriptAlerts;
+    protected String linkTextJavaScriptAlertsExpected = "JavaScript Alerts";
+
     
 }

@@ -16,3 +16,7 @@ buildNumber.properties
 *.class
 testResults/
 runSonarQube.bat
+/.apt_generated
+/.apt_generated_tests
+/bin/
+/downloads

@@ -28,9 +28,9 @@ public class ContextMenuPage extends ContextMenu {
     }
 
     public void clickHotspotComponent() {
-        General.setChromePosition();
-        General.setChromeDimensions();
-        General.rightClickElement(hotSpot);
+        General.getChromePosition();
+        General.getChromeDimensions();
+        General.rightClickOnElement(hotSpot);
     }
 
     public Alert getAlert() {

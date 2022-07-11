@@ -86,7 +86,7 @@ public class ReportManager {
     private static String getShot() {
         byte[] image = ((TakesScreenshot)Driver.get()).getScreenshotAs(OutputType.BYTES);
         File file = new File( images_path + "/step_" + (++iterator) + ".png" );
-        createFolders(images_path);
+        General.createFolders(images_path);
         try (FileOutputStream fos = new FileOutputStream(file)) {
             fos.write(image);
         }
@@ -94,13 +94,6 @@ public class ReportManager {
             Logger.getLogger(ReportManager.class.getName()).log(Level.WARNING, "Erro ao realizar captura de tela na geração de evidência de teste", e);
         }
         return file.getPath();
-    }
-
-    public static void createFolders(String path) {
-        File f = new File(path);
-        if (!f.exists()) {
-            f.mkdirs();
-        }
     }
 
     public static String getFeatureName( String scenarioClass ) {

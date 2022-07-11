@@ -22,7 +22,7 @@ public class AddRemoveElementsSteps {
     public void vereiOAPaginaABTestVariation( int quantity ) {
         this.quantity = quantity;
         General.waitToBeVisible( page.getTitle(), 10 );
-        Assert.assertTrue( page.getTitleExpected().equals(page.getTitle().getText().trim().toString()) );
+        Assert.assertEquals( page.getTitleExpected(), page.getTitle().getText().trim().toString() );
 
         Assert.assertEquals(page.getTextButtonAddElement(), page.getButtonAddElement().getText().trim());
         for (int i = 0; i < this.quantity; i++) {

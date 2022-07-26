@@ -5,10 +5,14 @@ import objects.HerokuappHome;
 
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+import common.StaticResources;
+
 public class HerokuappHomePage extends HerokuappHome {
     
     public HerokuappHomePage() {
         PageFactory.initElements( Driver.get(), this );
+        BasePage.goTo(StaticResources.HEROKUAPP);
     }
 
     public String getTitle() {

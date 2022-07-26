@@ -12,6 +12,7 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,6 +31,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -37,70 +39,17 @@ import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
 
 import driver.Driver;
-import io.cucumber.java.Scenario;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 import net.sourceforge.tess4j.util.LoadLibs;
 
-public class General {
-    /**
-     * Tempo padrão de espera para as funções wait implementadas nesta fonte.
-     */
-    private static final int DEFAULT_WAIT_TIME = 10;
-    private static String feature;
-    private static Scenario scenario;
+public class BasePage {
+	
     private static Point chromePosition;
     private static Dimension chromeDimensions;
 
-    private General() {
+    private BasePage() {
         throw new IllegalStateException("Erro para iniciar a classe General.");
-    }
-
-    /**
-     * Retorna o nome da feature extraída do arquivo com a escrita Gherkin que
-     * estiver em execução.
-     * <br>
-     * 
-     * @return
-     */
-    public static String getFeature() {
-        return feature;
-    }
-
-    /**
-     * Retorna o objeto de cenário de teste em execução extraído do Cucumber.
-     * <br>
-     * 
-     * @return
-     */
-    public static Scenario getScenario() {
-        return scenario;
-    }
-
-    /**
-     * Define o valor da feature em execução para utilização interna deste
-     * framework.
-     * Este método é utilizada para a criação das evidências de teste, na classe
-     * Reporter.
-     * <br>
-     * 
-     * @param featureName
-     */
-    public static void setFeature(String featureName) {
-        feature = featureName;
-    }
-
-    /**
-     * Armazena o objeto de cenário de teste em execução para utilização interna
-     * deste framework.
-     * Este método deve ser utilizada preferencialmente antes do teste iniciar, na
-     * classe _Hooks e no métodos com a tag @Before.
-     * <br>
-     * 
-     * @param cucumberScenario
-     */
-    public static void setScenario(Scenario cucumberScenario) {
-        scenario = cucumberScenario;
     }
 
     /**
@@ -120,7 +69,7 @@ public class General {
                 f.mkdirs();
             }
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar createFolders(String path)", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar createFolders(String path)", e);
             Thread.currentThread().interrupt();
         }
     }
@@ -143,10 +92,10 @@ public class General {
             createFolders(StaticResources.DOWNLOADS_DIR);
             FileUtils.copyURLToFile(new URL(url), new File(StaticResources.DOWNLOADS_DIR + "/" + fileName));
         } catch (MalformedURLException e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar downloadFile(String url, String fileName)", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar downloadFile(String url, String fileName)", e);
             Thread.currentThread().interrupt();
         } catch(IOException e){
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar downloadFile(String url, String fileName)", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar downloadFile(String url, String fileName)", e);
             Thread.currentThread().interrupt();
         }
     }
@@ -188,7 +137,7 @@ public class General {
         try {
             ((JavascriptExecutor) Driver.get()).executeScript("document[0].value = '" + value + "';", element);
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar sendKeysByJavascript(WebElement element, String value)", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar sendKeysByJavascript(WebElement element, String value)", e);
             Thread.currentThread().interrupt();
         }
     }
@@ -207,7 +156,7 @@ public class General {
         try {
             ((JavascriptExecutor) Driver.get()).executeScript("document[0].click()", element);
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar clickByJavascript(WebElement element)", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar clickByJavascript(WebElement element)", e);
             Thread.currentThread().interrupt();
         }
     }
@@ -222,13 +171,13 @@ public class General {
      */
     public static void clickByCoordinates(WebElement element) {
         try {
-            Point coords = General.getElementCenter(element);
+            Point coords = BasePage.getElementCenter(element);
             Actions act = new Actions(Driver.get());
             act.moveToElement(element, 0, 0).build().perform();
             act.moveByOffset(coords.x, coords.y).click().build().perform();
             act = null;
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar clickByCoordinates(WebElement element)", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar clickByCoordinates(WebElement element)", e);
             Thread.currentThread().interrupt();
         }
     }
@@ -247,7 +196,7 @@ public class General {
             act.moveByOffset(posX, posY).click().build().perform();
             act = null;
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar clickByCoordinates(int posX, int posY)", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar clickByCoordinates(int posX, int posY)", e);
             Thread.currentThread().interrupt();
         }
     }
@@ -266,7 +215,7 @@ public class General {
         try {
             ((JavascriptExecutor) Driver.get()).executeScript("document.querySelector('a.sb_pagN').scrollIntoView();", element);
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar scrollIntoByJavascript(WebElement element)", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar scrollIntoByJavascript(WebElement element)", e);
             Thread.currentThread().interrupt();
         }
     }
@@ -283,7 +232,7 @@ public class General {
         try {
             test = ((JavascriptExecutor) Driver.get()).executeScript("return arguments[0].attributes;", element).toString();
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar getTagAttributesByJavaScript(WebElement element)", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar getTagAttributesByJavaScript(WebElement element)", e);
             Thread.currentThread().interrupt();
         }
         return test;
@@ -305,7 +254,7 @@ public class General {
                 robot.keyRelease( KeyEvent.getExtendedKeyCodeForChar(word.charAt(i)) );
             }
         } catch (AWTException e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar typeKeyboard(String word)", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar typeKeyboard(String word)", e);
             Thread.currentThread().interrupt();
         }
     }
@@ -341,6 +290,8 @@ public class General {
      * @return
      */
     public static Point getChromePosition() {
+    	if( chromePosition == null)
+    		setChromePositionLocalVariable();
         return chromePosition;
     }
 
@@ -351,6 +302,8 @@ public class General {
      * @return
      */
     public static Dimension getChromeDimensions() {
+    	if( chromeDimensions == null)
+    		setChromeDimensionsLocalVariable();
         return chromeDimensions;
     }
 
@@ -399,7 +352,7 @@ public class General {
         try {
             new Actions(Driver.get()).dragAndDrop(origin, destination).build().perform();
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar dragElementTo(WebElement origin, WebElement destination)", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar dragElementTo(WebElement origin, WebElement destination)", e);
             Thread.currentThread().interrupt();
             //throw e;
         }
@@ -430,7 +383,7 @@ public class General {
                     StaticResources.SIKULIX_SOURCE_IMAGES + destination));
             screen = null;
 		} catch (FindFailed e) {
-			Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar dragAndDropSikulix(String origin, String destination)", e);
+			Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar dragAndDropSikulix(String origin, String destination)", e);
             Thread.currentThread().interrupt();
 		}
     }
@@ -455,10 +408,12 @@ public class General {
         Screen screen = new Screen();
         try {
             screen.find(StaticResources.SIKULIX_SOURCE_IMAGES + imgRef);
+            BasePage.waitFor(2);
             screen.click();
             screen = null;
-        } catch (FindFailed e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar clickSikulix(String imgRef)", e);
+        } 
+        catch (Exception e) {
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar clickSikulix(String imgRef)", e);
             Thread.currentThread().interrupt();
         }
     }
@@ -482,7 +437,7 @@ public class General {
             screen.write(text);
             screen = null;
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING,
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING,
                     "Erro para utilizar writeSikulix(String text)", e);
             Thread.currentThread().interrupt();
         }
@@ -505,7 +460,7 @@ public class General {
             screen.keyUp(key);
             screen = null;
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING,
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING,
                     "Erro para utilizar pressKeyboardSikulix(String key)", e);
             Thread.currentThread().interrupt();
         }
@@ -526,7 +481,7 @@ public class General {
             robot.keyPress(KeyEvent.getExtendedKeyCodeForChar(letter));
             robot.keyRelease(KeyEvent.getExtendedKeyCodeForChar(letter));
         } catch (AWTException e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING,
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING,
                     "Erro para utilizar typeKeyboard(char letter)", e);
             Thread.currentThread().interrupt();
         }
@@ -545,7 +500,7 @@ public class General {
             robot.keyRelease(KeyEvent.VK_TAB);
             robot = null;
         } catch (AWTException e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING,
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING,
                     "Erro para utilizar typeKeyboardTAB()", e);
             Thread.currentThread().interrupt();
         }
@@ -564,7 +519,7 @@ public class General {
             robot.keyRelease(KeyEvent.VK_ENTER);
             robot = null;
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING,
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING,
                     "Erro para utilizar typeKeyboardENTER()", e);
             Thread.currentThread().interrupt();
         }
@@ -587,7 +542,7 @@ public class General {
             robot.keyRelease(key);
             robot = null;
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING,
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING,
                     "Erro para utilizar typeKeyboard(int key)", e);
             Thread.currentThread().interrupt();
         }
@@ -613,7 +568,7 @@ public class General {
             robot.mouseMove(posX, posY);
             robot = null;
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING,
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING,
                     "Erro para utilizar moveMouseTo(int posX, int posY)", e);
             Thread.currentThread().interrupt();
         }
@@ -633,7 +588,7 @@ public class General {
         try {
             new Actions(Driver.get()).moveToElement(element).build().perform();
         } catch (Exception e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING,
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING,
                     "Erro para utilizar hoverElement(WebElement element)", e);
             Thread.currentThread().interrupt();
         }
@@ -657,10 +612,11 @@ public class General {
      */
     public static void waitFor( Integer timeInSeconds ) {
         try {
-            Thread.sleep( (timeInSeconds == null ) ? DEFAULT_WAIT_TIME : timeInSeconds*1000 );
+        	TimeUnit.MINUTES.sleep( (timeInSeconds == null) ? StaticResources.DEFAULT_WAIT_TIME : timeInSeconds );
+//            Thread.sleep( (timeInSeconds == null ) ? StaticResources.DEFAULT_WAIT_TIME : timeInSeconds*1000 );
             }
         catch (InterruptedException e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING, "Erro para utilizar Thread.sleep()", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar Thread.sleep()", e);
             Thread.currentThread().interrupt();
         }
      }
@@ -677,7 +633,7 @@ public class General {
      * @param timeInSeconds
      */
     public static void waitToBeVisible( WebElement element, Integer timeInSeconds ) {
-        new WebDriverWait(Driver.get(), Duration.ofSeconds((timeInSeconds == null) ? DEFAULT_WAIT_TIME
+        new WebDriverWait(Driver.get(), Duration.ofSeconds((timeInSeconds == null) ? StaticResources.DEFAULT_WAIT_TIME
                 : timeInSeconds)).until( ExpectedConditions.visibilityOf(element) );
     }
 
@@ -694,7 +650,7 @@ public class General {
      * @param timeInSeconds
      */
     public static void waitToBeVisible(By locator, Integer timeInSeconds) {
-        new WebDriverWait(Driver.get(), Duration.ofSeconds((timeInSeconds == null) ? DEFAULT_WAIT_TIME
+        new WebDriverWait(Driver.get(), Duration.ofSeconds((timeInSeconds == null) ? StaticResources.DEFAULT_WAIT_TIME
                 : timeInSeconds)).until(ExpectedConditions.visibilityOf(Driver.get().findElement(locator)));
     }
 
@@ -719,7 +675,7 @@ public class General {
 
         try {
             return new FluentWait(Driver.get())
-                    .withTimeout(Duration.ofSeconds((timeInSeconds == null) ? DEFAULT_WAIT_TIME : timeInSeconds))
+                    .withTimeout(Duration.ofSeconds((timeInSeconds == null) ? StaticResources.DEFAULT_WAIT_TIME : timeInSeconds))
                     .pollingEvery(Duration.ofSeconds(1))
                     .ignoreAll(exceptions).until(ExpectedConditions.visibilityOf(element));
         } catch (Exception e) {
@@ -755,7 +711,7 @@ public class General {
      * @return
      */
     public static Alert getAlert(Integer timeInSeconds) {
-        return new WebDriverWait(Driver.get(), Duration.ofSeconds((timeInSeconds == null) ? DEFAULT_WAIT_TIME
+        return new WebDriverWait(Driver.get(), Duration.ofSeconds((timeInSeconds == null) ? StaticResources.DEFAULT_WAIT_TIME
                 : timeInSeconds)).until(ExpectedConditions.alertIsPresent() );
     }
 
@@ -809,13 +765,13 @@ public class General {
             return conn.getResponseCode();
         }
         catch (MalformedURLException e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING,
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING,
                     "Erro para utilizar getStatusCodeFromURL(String targetUrl)", e);
             Thread.currentThread().interrupt();
             return 0;
         }
         catch (IOException e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING,
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING,
                     "Erro para utilizar getStatusCodeFromURL(String targetUrl)", e);
             Thread.currentThread().interrupt();
             return 0;
@@ -832,15 +788,13 @@ public class General {
      * @param element
      * @return
      */
-    public BufferedImage getImageFromObject( WebElement element ) {
-        BufferedImage bi = new BufferedImage(element.getRect().width, element.getRect().height,
-                BufferedImage.TYPE_INT_ARGB);
+    public static BufferedImage getImageFromObject( WebElement element ) {
+        BufferedImage bi = new BufferedImage(element.getRect().width, element.getRect().height, BufferedImage.TYPE_INT_ARGB);
         try {
             bi = ImageIO.read(element.getScreenshotAs(OutputType.FILE));
             return bi;
         } catch (WebDriverException | IOException e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING,
-                    "Erro para utilizar getImageFromObject(WebElement element)", e);
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar getImageFromObject(WebElement element)", e);
             Thread.currentThread().interrupt();
             return null;
         }
@@ -867,11 +821,15 @@ public class General {
             return tesseract.doOCR(img);
         }
         catch (TesseractException e) {
-            Logger.getLogger(General.class.getName()).log(Level.WARNING,
+            Logger.getLogger(BasePage.class.getName()).log(Level.WARNING,
                     "Erro para utilizar getTextFromImage(BufferedImage img)", e);
             Thread.currentThread().interrupt();
             return null;
         }
+    }
+    
+    public static String getBackgroundColorAsHex(WebElement element) {
+    	return Color.fromString(element.getCssValue("background-color")).asHex();
     }
 
     /**

@@ -1,12 +1,11 @@
 package steps;
 
-import common.General;
-import pages.DragAndDropPage;
-import reporter.ReportManager;
-
 import org.junit.Assert;
 
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import pages.DragAndDropPage;
+import reporter.ReportManager;
 
 public class DragAndDropSteps {
 
@@ -18,19 +17,17 @@ public class DragAndDropSteps {
 
     @Then("confirmo o acesso à página Drag and Drop")
     public void confirmoAcessPaginaDragAndDrop() {
-        General.waitToBeVisible(page.getTitle(), 5);
         Assert.assertEquals(page.getExpectedTextTitle(), page.getTitle().getText().trim());
-        ReportManager.setTestStep(General.getScenario().getStatus(), "Então confirmo o acesso à página Drag and Drop");
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então confirmo o acesso à página Drag and Drop");
     }
 
     @And("arrasto o componente A para a posição do componente B")
     public void arrastoComponenteAParaPosicaoComponenteB() {
-        //General.dragElementTo(page.getBoxA(), page.getBoxB());
-        General.waitFor(3);
-        General.dragAndDropSikulix("DragAndDrop_A.png", "DragAndDrop_B.png");
+//    	BasePage.dragElementTo(page.getBoxA(), page.getBoxB());
+        page.arrastarElementoAParaElementoB("DragAndDrop_A.png", "DragAndDrop_B.png");
         Assert.assertEquals(page.getExpectedTextBoxB(), page.getTextBoxA());
         Assert.assertEquals(page.getExpectedTextBoxA(), page.getTextBoxB());
-        ReportManager.setTestStep(General.getScenario().getStatus(), "E arrasto o componente 'A' para a posição do componente 'B'");
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E arrasto o componente 'A' para a posição do componente 'B'");
     }
 
     

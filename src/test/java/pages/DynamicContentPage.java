@@ -9,6 +9,8 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+
 public class DynamicContentPage extends DynamicContent {
 
     public DynamicContentPage() {
@@ -22,8 +24,13 @@ public class DynamicContentPage extends DynamicContent {
         imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-6.jpg"); // STAR TROOPER
         imagesPath.add("https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-7.jpg"); // ???
     }
+    
+    public void recarregarTela() {
+        BasePage.refreshPage();
+    }
 
     public WebElement getTitle() {
+        BasePage.waitToBeVisible(pageTitle, 5);
         return pageTitle;
     }
 
@@ -44,10 +51,12 @@ public class DynamicContentPage extends DynamicContent {
     }
 
     public List<WebElement> getPhrases() {
+        BasePage.waitToBeVisible(phraseContent.get(0), 5);
         return phraseContent;
     }
 
     public String[] getImagesURL() {
+        BasePage.waitToBeVisible(images.get(0), 6);
         String[] urls = new String[3];
         for (int i = 0; i < urls.length; i++) {
             urls[i] = images.get(i).getAttribute("src");

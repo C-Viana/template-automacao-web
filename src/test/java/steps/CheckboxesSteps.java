@@ -1,12 +1,11 @@
 package steps;
 
-import common.General;
-import pages.CheckboxesPage;
-import reporter.ReportManager;
-
 import org.junit.Assert;
 
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import pages.CheckboxesPage;
+import reporter.ReportManager;
 
 public class CheckboxesSteps {
 
@@ -18,29 +17,28 @@ public class CheckboxesSteps {
 
     @Then("confirmo o acesso à página Checkboxes")
     public void confirmoAcessoPaginaBrokenImages() {
-        General.waitToBeVisible(page.getTitle(), 6);
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
-        ReportManager.setTestStep(General.getScenario().getStatus(), "Então confirmo o acesso à página Checkboxes");
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então confirmo o acesso à página Checkboxes");
     }
 
     @And("valido as opções disponíveis")
     public void validoImagensTela() {
         page.listCheckboxOptions();
-        ReportManager.setTestStep(General.getScenario().getStatus(), "E valido as opções disponíveis");
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E valido as opções disponíveis");
     }
 
     @Then("marco o checkbox {string}")
     public void marcoCheckbox(String opt) {
         page.clickCheckBox(false, opt);
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
-        ReportManager.setTestStep(General.getScenario().getStatus(), "Então marco o checkbox " + opt);
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então marco o checkbox " + opt);
     }
 
     @Then("desmarco o checkbox {string}")
     public void desmarcoCheckbox(String opt) {
         page.clickCheckBox(true, opt);
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
-        ReportManager.setTestStep(General.getScenario().getStatus(), "Então desmarco o checkbox " + opt);
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então desmarco o checkbox " + opt);
     }
 
     

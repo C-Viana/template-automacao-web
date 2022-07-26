@@ -11,9 +11,10 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
     features = "src/test/java/features",
     glue = {"steps"},
     snippets = SnippetType.CAMELCASE,
-    dryRun = false,
-    stepNotifications = true
-    //,tags = "@Test12B"
+    monochrome = true,
+    stepNotifications = true,
+    dryRun = true
+//    ,tags = "@Test22B"
 )
 @RunWith(Cucumber.class)
 public class AppTest 

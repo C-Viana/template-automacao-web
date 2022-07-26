@@ -6,6 +6,8 @@ import objects.ABTestingVariation1;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+
 public class ABTestingVariation1Page extends ABTestingVariation1 {
 
     public ABTestingVariation1Page() {
@@ -13,6 +15,7 @@ public class ABTestingVariation1Page extends ABTestingVariation1 {
     }
 
     public WebElement getTitle() {
+        BasePage.waitToBeVisible( pageTitle, 10 );
         return pageTitle;
     }
 

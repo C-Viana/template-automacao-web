@@ -1,12 +1,11 @@
 package steps;
 
-import common.General;
-import pages.DynamicControlsPage;
-import reporter.ReportManager;
-
 import org.junit.Assert;
 
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import pages.DynamicControlsPage;
+import reporter.ReportManager;
 
 public class DynamicControlsSteps {
 
@@ -18,33 +17,30 @@ public class DynamicControlsSteps {
 
     @Then("confirmo o acesso à página Dynamic Controls")
     public void confirmoAcessPaginaDynamicControls() {
-        General.waitToBeVisible(page.getTitle(), 5);
         Assert.assertEquals(page.getExpectedTxtTitle(), page.getTitle().getText().trim());
         Assert.assertEquals(page.getExpectedTxtSubtitle(), page.getSubtitle().getText().trim());
-        ReportManager.setTestStep(General.getScenario().getStatus(), "Então confirmo o acesso à página Dynamic Controls");
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então confirmo o acesso à página Dynamic Controls");
     }
 
     @And("removo o checkbox")
     public void removoCheckbox() {
-        Assert.assertTrue( "Componente de checkbox não deveria estar ausente.", General.elementExists(page.getCheckbox()) );
+        Assert.assertTrue( "Componente de checkbox não deveria estar ausente.", page.isCheckboxVisible() );
         page.getBtnRemoveAddCheckbox().click();
         Assert.assertEquals( page.getExpectedTextLoading(), page.getLoadingElement().getText().trim() );
-        ReportManager.setTestStep(General.getScenario().getStatus(), "Removendo o elemento de checkbox");
-        General.waitToBeVisible( page.getMessageElement(), 10 );
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Removendo o elemento de checkbox");
         Assert.assertEquals(page.getTextRemovedCheckbox(), page.getMessageElement().getText().trim());
-        Assert.assertFalse("Componente de checkbox deveria estar ausente.", General.elementExists(page.getCheckbox()));
-        ReportManager.setTestStep(General.getScenario().getStatus(), "E removo o checkbox");
+        Assert.assertFalse("Componente de checkbox deveria estar ausente.", page.isCheckboxVisible());
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E removo o checkbox");
     }
 
     @And("adiciono o checkbox")
     public void adicionoCheckbox() {
         page.getBtnRemoveAddCheckbox().click();
         Assert.assertEquals(page.getExpectedTextLoading(), page.getLoadingElement().getText().trim());
-        ReportManager.setTestStep(General.getScenario().getStatus(), "Adicionando o elemento de checkbox");
-        General.waitToBeVisible(page.getMessageElement(), 10);
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Adicionando o elemento de checkbox");
         Assert.assertEquals(page.getTextAddedCheckbox(), page.getMessageElement().getText().trim());
-        Assert.assertTrue("Componente de checkbox não deveria estar ausente.", General.elementExists(page.getCheckbox()));
-        ReportManager.setTestStep(General.getScenario().getStatus(), "E adiciono o checkbox");
+        Assert.assertTrue("Componente de checkbox não deveria estar ausente.", page.isCheckboxVisible());
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E adiciono o checkbox");
     }
 
     @And("habilito o campo de texto para digitar a palavra {string}")
@@ -52,23 +48,21 @@ public class DynamicControlsSteps {
         Assert.assertFalse("Input deveria estar desabilitado.", page.getInput().isEnabled());
         page.getBtnEnableDisableInput().click();
         Assert.assertEquals(page.getExpectedTextLoading(), page.getLoadingElement().getText().trim());
-        ReportManager.setTestStep(General.getScenario().getStatus(), "Habilitando o elemento input");
-        General.waitToBeVisible(page.getMessageElement(), 10);
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Habilitando o elemento input");
         Assert.assertEquals(page.getExpectedTextEnabledInput(), page.getMessageElement().getText().trim());
         Assert.assertTrue("Input deveria estar habilitado.", page.getInput().isEnabled());
         page.getInput().sendKeys(text);
-        ReportManager.setTestStep(General.getScenario().getStatus(), "E habilito o campo de texto para digitar a palavra "+text);
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E habilito o campo de texto para digitar a palavra "+text);
     }
 
     @And("desabilito o campo de texto")
     public void desabilitarInput() {
         page.getBtnEnableDisableInput().click();
         Assert.assertEquals(page.getExpectedTextLoading(), page.getLoadingElement().getText().trim());
-        ReportManager.setTestStep(General.getScenario().getStatus(), "Desabilitando o elemento input");
-        General.waitToBeVisible(page.getMessageElement(), 10);
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Desabilitando o elemento input");
         Assert.assertEquals(page.getExpectedTextDisabledInput(), page.getMessageElement().getText().trim());
         Assert.assertFalse("Input deveria estar desabilitado.", page.getInput().isEnabled());
-        ReportManager.setTestStep(General.getScenario().getStatus(), "E desabilito o campo de texto");
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E desabilito o campo de texto");
     }
 
    

@@ -17,7 +17,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.PageFactory;
 
-import common.General;
+import common.BasePage;
 
 public class ChallengingDOMPage extends ChallengingDOM {
 
@@ -30,6 +30,7 @@ public class ChallengingDOMPage extends ChallengingDOM {
     }
 
     public String getCurrentTextTitle() {
+        BasePage.waitToBeVisible(pageTitle, 6);
         return pageTitle.getText().trim();
     }
 
@@ -46,6 +47,10 @@ public class ChallengingDOMPage extends ChallengingDOM {
             e.printStackTrace();
             return null;
         }
+    }
+    
+    public String getTextoDoCanvas() {
+    	return BasePage.getTextFromImage(BasePage.getImageFromObject(canvas));
     }
 
     public WebElement getButton(int index) {
@@ -80,14 +85,15 @@ public class ChallengingDOMPage extends ChallengingDOM {
                 Assert.fail("A cor selecionada não condiz com as opções esperadas (vermelho, verde e azul). ");
                 return;
         }
+        BasePage.waitToBeVisible(buttons.get(0), 6);
         for (WebElement webElement : buttons) {
-            if (Color.fromString(webElement.getCssValue("background-color")).asHex().equals(selectedColorHexCode)) {
+            if (BasePage.getBackgroundColorAsHex(webElement).equals(selectedColorHexCode)) {
                 System.out.println("Texto do botão antes de ser clicado: " + webElement.getText());
                 webElement.click();
                 break;
             }
         }
-        General.waitFor(2);
+        BasePage.waitFor(2);
         System.out.println("Texto do botão após clicado: " + getButtonTextByColor(selectedColorHexCode));
     }
 

@@ -6,6 +6,8 @@ import objects.EntryAd;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+
 public class EntryAdPage extends EntryAd {
 
     public EntryAdPage() {
@@ -13,6 +15,7 @@ public class EntryAdPage extends EntryAd {
     }
 
     public WebElement getTitle() {
+        BasePage.waitToBeVisible(pageTitle, 5);
         return pageTitle;
     }
 
@@ -21,6 +24,7 @@ public class EntryAdPage extends EntryAd {
     }
 
     public WebElement getModal() {
+        BasePage.waitToBeVisibleIgnoringExceptions(modal, 5);
         return modal;
     }
 

@@ -6,6 +6,8 @@ import objects.DynamicControls;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+
 public class DynamicControlsPage extends DynamicControls {
 
     public DynamicControlsPage() {
@@ -13,6 +15,7 @@ public class DynamicControlsPage extends DynamicControls {
     }
 
     public WebElement getTitle() {
+        BasePage.waitToBeVisible(pageTitle, 5);
         return pageTitle;
     }
 
@@ -31,6 +34,10 @@ public class DynamicControlsPage extends DynamicControls {
     public WebElement getCheckbox() {
         return checkbox;
     }
+    
+    public boolean isCheckboxVisible() {
+    	return BasePage.elementExists(checkbox);
+    }
 
     public WebElement getBtnRemoveAddCheckbox() {
         return btnAddRemoveCheckbox;
@@ -45,6 +52,7 @@ public class DynamicControlsPage extends DynamicControls {
     }
 
     public WebElement getMessageElement() {
+        BasePage.waitToBeVisible( txtMessageElement, 10 );
         return txtMessageElement;
     }
 

@@ -8,6 +8,8 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+
 public class HoverPage extends Hover {
 
     public HoverPage() {
@@ -24,6 +26,10 @@ public class HoverPage extends Hover {
 
     public List<WebElement> getProfileCards() {
         return cardsProfile;
+    }
+    
+    public void hoverProfileCard(int index) {
+    	BasePage.hoverElement(cardsProfile.get(index));
     }
 
     public List<WebElement> getProfileNames() {

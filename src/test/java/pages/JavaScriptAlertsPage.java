@@ -3,8 +3,11 @@ package pages;
 import driver.Driver;
 import objects.JavaScriptAlerts;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+
+import common.BasePage;
 
 public class JavaScriptAlertsPage extends JavaScriptAlerts {
 
@@ -68,7 +71,9 @@ public class JavaScriptAlertsPage extends JavaScriptAlerts {
         return txtExpectedTxtResultPromptNull;
     }
 
-    
+    public Alert getCurrentAlert() {
+    	return BasePage.getAlert(10);
+    }
     
     
 }

@@ -9,6 +9,8 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+
 public class CheckboxesPage extends Checkboxes {
 
     public CheckboxesPage() {
@@ -20,6 +22,7 @@ public class CheckboxesPage extends Checkboxes {
     }
 
     public String getCurrentTextTitle() {
+        BasePage.waitToBeVisible(pageTitle, 6);
         return pageTitle.getText().trim();
     }
 

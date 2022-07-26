@@ -6,13 +6,20 @@ import objects.DisappearingElements;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+
 public class DisappearingElementsPage extends DisappearingElements {
     
     public DisappearingElementsPage() {
         PageFactory.initElements( Driver.get(), this );
     }
+    
+    public void atualizarTela() {
+    	BasePage.refreshPage();
+    }
 
     public WebElement getTitle() {
+        BasePage.waitToBeVisible(pageTitle, 6);
         return pageTitle;
     }
 
@@ -62,6 +69,14 @@ public class DisappearingElementsPage extends DisappearingElements {
 
     public WebElement getBtnGallery() {
         return btnGallery;
+    }
+    
+    public boolean btnGaleriaIsVisible() {
+    	return BasePage.elementExists(btnGallery);
+    }
+    
+    public Object aguardarBtnGaleria() {
+    	return BasePage.waitToBeVisibleIgnoringExceptions(btnGallery, 5);
     }
 
     public String getBtnGalleryTextExpected() {

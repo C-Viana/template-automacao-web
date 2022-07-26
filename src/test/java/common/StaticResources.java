@@ -39,4 +39,9 @@ public class StaticResources {
      * SE TRUE, OS TESTES SERÃO EXECUTADOS COMO SUITE E SERÁ GERADA UMA ÚNICA EVIDÊNCIA PARA TODOS OS TESTES.
      */
     public static boolean suite_test = false;
+    
+    /**
+     * Tempo padrão de espera para as funções wait implementadas nesta fonte.
+     */
+    public static final int DEFAULT_WAIT_TIME = 10;
 }

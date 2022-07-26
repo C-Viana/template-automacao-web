@@ -8,7 +8,7 @@ import org.openqa.selenium.UsernameAndPassword;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-import common.General;
+import common.BasePage;
 
 public class BasicAuthPage extends BasicAuth {
 
@@ -17,27 +17,31 @@ public class BasicAuthPage extends BasicAuth {
     }
 
     public void authenticateByKeyboard( String userName, String passCode) {
-        General.typeKeyboard(userName);
-        General.waitFor(1);
-        General.typeKeyboardTAB();
-        General.waitFor(1);
-        General.typeKeyboard(passCode);
-        General.waitFor(1);
+        BasePage.typeKeyboard(userName);
+        BasePage.waitFor(1);
+        BasePage.typeKeyboardTAB();
+        BasePage.waitFor(1);
+        BasePage.typeKeyboard(passCode);
+        BasePage.waitFor(1);
+    }
+    
+    public void teclarEnter() {
+    	BasePage.typeKeyboardENTER();
     }
 
     public void cancelarAutenticacao() {
-        General.typeKeyboardTAB();
-        General.waitFor(1);
-        General.typeKeyboardTAB();
-        General.waitFor(1);
-        General.typeKeyboardTAB();
-        General.waitFor(1);
-        General.typeKeyboardENTER();
+        BasePage.typeKeyboardTAB();
+        BasePage.waitFor(1);
+        BasePage.typeKeyboardTAB();
+        BasePage.waitFor(1);
+        BasePage.typeKeyboardTAB();
+        BasePage.waitFor(1);
+        BasePage.typeKeyboardENTER();
     }
 
     public void authenticateByURL(String userName, String passCode) {
         Driver.get().get("https://" + userName + ":" + passCode + "@the-internet.herokuapp.com/basic_auth");
-        General.waitFor(3);
+        BasePage.waitFor(3);
         
     }
 

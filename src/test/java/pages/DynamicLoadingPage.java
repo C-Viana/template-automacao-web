@@ -6,6 +6,8 @@ import objects.DynamicLoading;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+
 public class DynamicLoadingPage extends DynamicLoading {
 
     public DynamicLoadingPage() {
@@ -17,6 +19,7 @@ public class DynamicLoadingPage extends DynamicLoading {
     }
 
     public WebElement getLinkExample1() {
+        BasePage.waitToBeVisible(linkExample1, 5);
         return linkExample1;
     }
 
@@ -45,6 +48,7 @@ public class DynamicLoadingPage extends DynamicLoading {
     }
 
     public WebElement getBtnStart() {
+        BasePage.waitToBeVisible(btnStart, 5);
         return btnStart;
     }
 
@@ -53,6 +57,7 @@ public class DynamicLoadingPage extends DynamicLoading {
     }
 
     public WebElement getLoading() {
+        BasePage.waitToBeVisible(txtLoading, 5);
         return txtLoading;
     }
 
@@ -61,7 +66,12 @@ public class DynamicLoadingPage extends DynamicLoading {
     }
 
     public WebElement getHiddenElement() {
+        BasePage.waitToBeVisibleIgnoringExceptions(hiddenElement, null);
         return hiddenElement;
+    }
+    
+    public boolean hiddenElementExistis() {
+    	return BasePage.elementExists(hiddenElement);
     }
 
     public WebElement getHiddenElementContent() {

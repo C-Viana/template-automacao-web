@@ -7,12 +7,14 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-import common.General;
+import common.BasePage;
 
 public class ContextMenuPage extends ContextMenu {
 
     public ContextMenuPage() {
         PageFactory.initElements( Driver.get(), this );
+        BasePage.setChromePositionLocalVariable();
+        BasePage.setChromeDimensionsLocalVariable();
     }
 
     public WebElement getTitle() {
@@ -20,6 +22,7 @@ public class ContextMenuPage extends ContextMenu {
     }
 
     public String getCurrentTextTitle() {
+        BasePage.waitToBeVisible(pageTitle, 6);
         return pageTitle.getText().trim();
     }
 
@@ -28,13 +31,13 @@ public class ContextMenuPage extends ContextMenu {
     }
 
     public void clickHotspotComponent() {
-        General.getChromePosition();
-        General.getChromeDimensions();
-        General.rightClickOnElement(hotSpot);
+        BasePage.getChromePosition();
+        BasePage.getChromeDimensions();
+        BasePage.rightClickOnElement(hotSpot);
     }
 
     public Alert getAlert() {
-        return General.getAlert(5);
+        return BasePage.getAlert(5);
     }
 
     public String getAlertExpectedText() {

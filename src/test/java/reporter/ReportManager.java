@@ -25,9 +25,10 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 
-import common.General;
+import common.BasePage;
 import common.StaticResources;
 import driver.Driver;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.Status;
 
 
@@ -38,6 +39,65 @@ public class ReportManager {
     private static int iterator = 0;
     private static String ROOT_PATH = "";
     private static String images_path = "";
+    
+    private static String feature;
+    private static Scenario scenario;
+
+    /**
+     * Retorna o nome da feature extraída do arquivo com a escrita Gherkin que
+     * estiver em execução.
+     * <br>
+     * 
+     * @return
+     */
+    public static String getFeature() {
+        return feature;
+    }
+
+    /**
+     * Retorna o objeto de cenário de teste em execução extraído do Cucumber.
+     * <br>
+     * 
+     * @return
+     */
+    public static Scenario getScenario() {
+        return scenario;
+    }
+
+	/**
+	 * Retorna o resultado da execução do teste atual. <br>
+	 * 
+	 * @return
+	 */
+	public static Status getScenarioStatus() {
+		return scenario.getStatus();
+	}
+
+    /**
+     * Define o valor da feature em execução para utilização interna deste
+     * framework.
+     * Este método é utilizada para a criação das evidências de teste, na classe
+     * Reporter.
+     * <br>
+     * 
+     * @param featureName
+     */
+    public static void setFeature(String featureName) {
+        feature = featureName;
+    }
+
+    /**
+     * Armazena o objeto de cenário de teste em execução para utilização interna
+     * deste framework.
+     * Este método deve ser utilizada preferencialmente antes do teste iniciar, na
+     * classe _Hooks e no métodos com a tag @Before.
+     * <br>
+     * 
+     * @param cucumberScenario
+     */
+    public static void setScenario(Scenario cucumberScenario) {
+        scenario = cucumberScenario;
+    }
 
     public static void setResultPath(String featureName, String scenarioName) {
         String date = new SimpleDateFormat("dd-MM-yyyy").format(Date.from(Instant.now()));
@@ -45,8 +105,10 @@ public class ReportManager {
             ROOT_PATH = "C:/Test_Results/" + date + "/" + getFeatureName(featureName) + "/" + scenarioName.replaceAll("[\\/?\\*:<>]", "");
         }
         else
-            if(reporter == null)
-                ROOT_PATH = "C:/Test_Results/" + date + "/" + "Suite_Run_" + new SimpleDateFormat("HH-mm").format(Calendar.getInstance().getTime());
+            if(reporter == null){
+            	String[] names = System.getProperty("user.dir").replace("\\", "_").split("_");
+                ROOT_PATH = "C:/Test_Results/" + date + "/" + names[names.length-1] + "_Suite_Run_" + new SimpleDateFormat("HH-mm").format(Calendar.getInstance().getTime());
+            }
     }
 
     public static void startReport() {
@@ -86,7 +148,7 @@ public class ReportManager {
     private static String getShot() {
         byte[] image = ((TakesScreenshot)Driver.get()).getScreenshotAs(OutputType.BYTES);
         File file = new File( images_path + "/step_" + (++iterator) + ".png" );
-        General.createFolders(images_path);
+        BasePage.createFolders(images_path);
         try (FileOutputStream fos = new FileOutputStream(file)) {
             fos.write(image);
         }
@@ -103,8 +165,8 @@ public class ReportManager {
     private static String getShotJava() {
         File file = new File(images_path + "/step_" + (++iterator) + ".png");
         try {
-            Point pos = General.getChromePosition();
-            Dimension size = General.getChromeDimensions();
+            Point pos = BasePage.getChromePosition();
+            Dimension size = BasePage.getChromeDimensions();
             BufferedImage bi = new Robot().createScreenCapture( new Rectangle(pos.x, pos.y, size.width, size.height) );
             ImageIO.write(bi, "png", file);
         } catch (AWTException | IOException e) {

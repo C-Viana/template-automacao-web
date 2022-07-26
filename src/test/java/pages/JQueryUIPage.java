@@ -6,6 +6,8 @@ import objects.JQueryUI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+
 public class JQueryUIPage extends JQueryUI {
 
     public JQueryUIPage() {
@@ -23,6 +25,11 @@ public class JQueryUIPage extends JQueryUI {
     public WebElement getItemEnabled() {
         return enabledListItem;
     }
+    
+    public void hoverItemEnabled() {
+    	BasePage.hoverElement(enabledListItem);
+        BasePage.waitFor(2);
+    }
 
     public String getItemEnabledTextExpected() {
         return enabledListItemTextExpected;
@@ -30,6 +37,11 @@ public class JQueryUIPage extends JQueryUI {
 
     public WebElement getItemDownload() {
         return downloadsListItem;
+    }
+    
+    public void hoverItemDownload() {
+    	BasePage.hoverElement(downloadsListItem);
+        BasePage.waitFor(2);
     }
 
     public String getItemDownloadTextExpected() {

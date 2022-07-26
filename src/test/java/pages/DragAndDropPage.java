@@ -6,6 +6,8 @@ import objects.DragAndDrop;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+
 public class DragAndDropPage extends DragAndDrop {
 
     public DragAndDropPage() {
@@ -13,6 +15,7 @@ public class DragAndDropPage extends DragAndDrop {
     }
 
     public WebElement getTitle() {
+        BasePage.waitToBeVisible(pageTitle, 5);
         return pageTitle;
     }
 
@@ -46,6 +49,10 @@ public class DragAndDropPage extends DragAndDrop {
 
     public String getExpectedTextBoxB() {
         return txtExpectedBoxB;
+    }
+    
+    public void arrastarElementoAParaElementoB(String nomeImgElementoA, String nomeImgElementoB) {
+    	BasePage.dragAndDropSikulix(nomeImgElementoA, nomeImgElementoB);
     }
     
 }

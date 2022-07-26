@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import common.BasePage;
+
 public class DropdownPage extends Dropdown {
 
     public DropdownPage() {
@@ -14,6 +16,7 @@ public class DropdownPage extends Dropdown {
     }
 
     public WebElement getTitle() {
+        BasePage.waitToBeVisible(pageTitle, 5);
         return pageTitle;
     }
 

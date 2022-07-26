@@ -8,6 +8,8 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+
 public class AddRemoveElementsPage extends AddRemoveElements {
 
     public AddRemoveElementsPage() {
@@ -15,6 +17,7 @@ public class AddRemoveElementsPage extends AddRemoveElements {
     }
 
     public WebElement getTitle() {
+        BasePage.waitToBeVisible( pageTitle, 10 );
         return pageTitle;
     }
 

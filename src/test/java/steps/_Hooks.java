@@ -1,21 +1,20 @@
 package steps;
 
+import common.StaticResources;
+import driver.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
+import io.cucumber.java.Status;
 import reporter.ReportManager;
-
-import common.General;
-import common.StaticResources;
-import driver.Driver;
 
 public class _Hooks {
 
     @BeforeAll
     public static void beforeAll() {
-        StaticResources.suite_test = false;
+        StaticResources.suite_test = true;
     }
 
     @AfterAll
@@ -26,14 +25,16 @@ public class _Hooks {
 
     @Before
     public void startTest(Scenario scenario) {
-        General.setScenario(scenario);
-        ReportManager.setResultPath(scenario.getUri().toString(), General.getScenario().getName());
+    	ReportManager.setScenario(scenario);
+        ReportManager.setResultPath(scenario.getUri().toString(), ReportManager.getScenario().getName());
         ReportManager.startReport();
-        ReportManager.startTest(General.getScenario().getName());
+        ReportManager.startTest(ReportManager.getScenario().getName());
     }
 
     @After
     public void endTest() {
+        if( ReportManager.getScenarioStatus() == Status.FAILED )
+        	ReportManager.setTestStep( ReportManager.getScenarioStatus(), "Erro!");
         ReportManager.endTest();
         if (!StaticResources.suite_test)
             ReportManager.endReport();

@@ -1,12 +1,11 @@
 package steps;
 
-import common.General;
-import pages.ContextMenuPage;
-import reporter.ReportManager;
-
 import org.junit.Assert;
 
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import pages.ContextMenuPage;
+import reporter.ReportManager;
 
 public class ContextMenuSteps {
 
@@ -19,19 +18,16 @@ public class ContextMenuSteps {
 
     @Then("valido a exibição do alert ao clicar com o botão direito na área marcada")
     public void validoExibicaoAlertClicarDireitoAreaMarcada() {
-        General.waitToBeVisible(page.getTitle(), 6);
-        General.setChromePositionLocalVariable();
-        General.setChromeDimensionsLocalVariable();
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
         page.clickHotspotComponent();
         Assert.assertEquals(page.getAlertExpectedText(), page.getAlert().getText());
-        ReportManager.setTestStepOutContext(General.getScenario().getStatus(), "Então valido a exibição do alert");
+        ReportManager.setTestStepOutContext(ReportManager.getScenario().getStatus(), "Então valido a exibição do alert");
     }
 
     @And("encerro o alert")
     public void encerroAlert() {
         page.getAlert().dismiss();
-        ReportManager.setTestStep(General.getScenario().getStatus(), "E encerro o alert");
+        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E encerro o alert");
     }
 
     

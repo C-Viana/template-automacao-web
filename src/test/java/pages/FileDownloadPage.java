@@ -9,6 +9,8 @@ import java.util.Random;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import common.BasePage;
+
 public class FileDownloadPage extends FileDownload {
 
     public FileDownloadPage() {
@@ -28,9 +30,12 @@ public class FileDownloadPage extends FileDownload {
     }
 
     public WebElement getRandomDownloadItem() {
+    	BasePage.waitToBeVisible(downloadLinks.get(0), 5);
         return downloadLinks.get(new Random().nextInt(downloadLinks.size()));
     }
     
-    
+    public void realizarDownloadDoArquivo(String url) {
+    	BasePage.downloadFile(url, url.split("download/")[1]);
+    }
     
 }

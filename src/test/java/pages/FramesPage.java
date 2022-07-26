@@ -3,8 +3,11 @@ package pages;
 import driver.Driver;
 import objects.Frames;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+
+import common.BasePage;
 
 public class FramesPage extends Frames {
 
@@ -35,25 +38,29 @@ public class FramesPage extends Frames {
     public String getLinkIFramesTextExpected() {
         return linkIFrameExpectedText;
     }
-
-    public WebElement getFrameTop() {
-        return frameTop;
+    
+    public void returnDefaultContext() {
+    	BasePage.setDefaultContext();
     }
 
-    public WebElement getFrameLeft() {
-        return frameLeft;
+    public void enterContextFrameTop() {
+        BasePage.setContext(frameTop);
     }
 
-    public WebElement getFrameMiddle() {
-        return frameMiddle;
+    public void enterContextFrameLeft() {
+        BasePage.setContext(frameLeft);
     }
 
-    public WebElement getFrameRight() {
-        return frameRight;
+    public void enterContextFrameMiddle() {
+        BasePage.setContext(frameMiddle);
     }
 
-    public WebElement getFrameBottom() {
-        return frameBottom;
+    public void enterContextFrameRight() {
+        BasePage.setContext(frameRight);
+    }
+
+    public void enterContextFrameBottom() {
+        BasePage.setContext(frameBottom);
     }
 
     public WebElement getIFrameTitle() {
@@ -64,14 +71,20 @@ public class FramesPage extends Frames {
         return titleIFrameExpectedText;
     }
 
-    public WebElement getIFrame() {
-        return iFrame;
+    public void enterContextIFrame() {
+        BasePage.setContext(iFrame);
     }
 
     public WebElement getIFrameParagraph() {
         return iFrameParagraph;
     }
     
+    public String getTextFromFrameBody() {
+    	return BasePage.getTextFromElement(By.tagName("body"));
+    }
     
+    public int getQuantityFramesTop() {
+    	return BasePage.getElements(By.tagName("frame")).size();
+    }
     
 }

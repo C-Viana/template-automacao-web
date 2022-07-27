@@ -18,7 +18,7 @@ public class BrokenImagesSteps {
     @Then("confirmo o acesso à página Broken Images")
     public void confirmoAcessoPaginaBrokenImages() {
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então confirmo o acesso à página Broken Images");
+        ReportManager.setTestStep("Então confirmo o acesso à página Broken Images");
     }
 
     @And("valido as imagens em tela")
@@ -31,14 +31,14 @@ public class BrokenImagesSteps {
             else
                 Assert.assertEquals(404, httpResponseCode);
         }
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E valido as imagens em tela");
+        ReportManager.setTestStep("E valido as imagens em tela");
     }
 
     @And("valido a imagem {int} em tela com status {int}")
     public void validoImagenNComStatus(int index, int expectedResponseCode) {
         int httpResponseCode = page.validarIntegridadeImagens(index-1);
         Assert.assertEquals(expectedResponseCode, httpResponseCode);
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E valido a imagem "+index+" em tela com status " + expectedResponseCode);
+        ReportManager.setTestStep("E valido a imagem "+index+" em tela com status " + expectedResponseCode);
     }
 
 }

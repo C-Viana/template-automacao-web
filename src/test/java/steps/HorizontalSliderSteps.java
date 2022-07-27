@@ -22,7 +22,7 @@ public class HorizontalSliderSteps {
         page.robotTeclarSetaDireita();
         page.robotTeclarSetaDireita();
         Assert.assertEquals("1.5", page.getSliderCounter().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então realizo a interação com o slider");
+        ReportManager.setTestStep("Então realizo a interação com o slider");
     }
 
 

@@ -23,7 +23,7 @@ public class FileDownloadSteps {
         int responseCode = BasePage.getStatusCodeFromURL(url);
         Assert.assertEquals(200, responseCode);
         page.realizarDownloadDoArquivo(url);
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então realizo o download de um elemento aleatório");
+        ReportManager.setTestStep("Então realizo o download de um elemento aleatório");
     }
 
 

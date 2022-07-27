@@ -25,7 +25,7 @@ public class AddRemoveElementsSteps {
         for (int i = 0; i < this.quantity; i++) {
             page.getButtonAddElement().click();
         }
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então adiciono " + this.quantity + " elementos");
+        ReportManager.setTestStep("Então adiciono " + this.quantity + " elementos");
     }
 
     @And("removo todos os elementos adicionados")
@@ -36,6 +36,6 @@ public class AddRemoveElementsSteps {
             btn.click();
         });
         Assert.assertEquals( 0, page.getButtonRemove().size() );
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E removo todos os elementos adicionados");
+        ReportManager.setTestStep("E removo todos os elementos adicionados");
     }
 }

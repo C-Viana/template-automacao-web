@@ -22,7 +22,7 @@ public class EntryAdSteps {
         Assert.assertEquals(page.getModalHeaderTextExpected(), page.getModalHeader().getText().trim());
         Assert.assertEquals(page.getModalBodyTextExpected(), page.getModalBody().getText().trim());
         Assert.assertEquals(page.getModalFooterTextExpected(), page.getModalFooter().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então confirmo que o modal é exibido");
+        ReportManager.setTestStep("Então confirmo que o modal é exibido");
     }
 
     @And("encerro a exibição do modal")
@@ -30,7 +30,7 @@ public class EntryAdSteps {
         page.getModalFooter().click();
         Assert.assertTrue("", page.getModal().getAttribute("style").contains("display: none"));
         Assert.assertEquals(page.getLinkClickHereTextExpected(), page.getLinkClickHere().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E encerro a exibição do modal");
+        ReportManager.setTestStep("E encerro a exibição do modal");
     }
 
 

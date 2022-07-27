@@ -19,7 +19,7 @@ public class FramesSteps {
     public void acessarPaginaFrameset() {
         Assert.assertEquals(page.getLinkNestedFramesTextExpected(), page.getLinkNestedFrames().getText().trim());
         page.getLinkNestedFrames().click();
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E acessar a página de frameset");
+        ReportManager.setTestStep("E acessar a página de frameset");
     }
 
     @Then("identifico cada um dos frames")
@@ -45,14 +45,14 @@ public class FramesSteps {
         Assert.assertEquals("BOTTOM", page.getTextFromFrameBody());
 
         page.returnDefaultContext();
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então identifico cada um dos frames");
+        ReportManager.setTestStep("Então identifico cada um dos frames");
     }
 
     @And("acessar a página de iFrame")
     public void acessarPaginaIFrame() {
         Assert.assertEquals(page.getLinkIFramesTextExpected(), page.getLinkIFrames().getText().trim());
         page.getLinkIFrames().click();
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E acessar a página de iFrame");
+        ReportManager.setTestStep("E acessar a página de iFrame");
     }
 
     @Then("interajo com o componente iFrame")
@@ -64,7 +64,7 @@ public class FramesSteps {
         page.getIFrameParagraph().sendKeys("FRASE DE TESTE BEM SUCEDIDO!");
 
         page.returnDefaultContext();
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então interajo com o componente iFrame");
+        ReportManager.setTestStep("Então interajo com o componente iFrame");
     }
 
 

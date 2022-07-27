@@ -18,27 +18,27 @@ public class CheckboxesSteps {
     @Then("confirmo o acesso à página Checkboxes")
     public void confirmoAcessoPaginaBrokenImages() {
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então confirmo o acesso à página Checkboxes");
+        ReportManager.setTestStep("Então confirmo o acesso à página Checkboxes");
     }
 
     @And("valido as opções disponíveis")
     public void validoImagensTela() {
         page.listCheckboxOptions();
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E valido as opções disponíveis");
+        ReportManager.setTestStep("E valido as opções disponíveis");
     }
 
     @Then("marco o checkbox {string}")
     public void marcoCheckbox(String opt) {
         page.clickCheckBox(false, opt);
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então marco o checkbox " + opt);
+        ReportManager.setTestStep("Então marco o checkbox " + opt);
     }
 
     @Then("desmarco o checkbox {string}")
     public void desmarcoCheckbox(String opt) {
         page.clickCheckBox(true, opt);
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então desmarco o checkbox " + opt);
+        ReportManager.setTestStep("Então desmarco o checkbox " + opt);
     }
 
     

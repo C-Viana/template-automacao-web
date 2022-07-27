@@ -18,7 +18,7 @@ public class DragAndDropSteps {
     @Then("confirmo o acesso à página Drag and Drop")
     public void confirmoAcessPaginaDragAndDrop() {
         Assert.assertEquals(page.getExpectedTextTitle(), page.getTitle().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então confirmo o acesso à página Drag and Drop");
+        ReportManager.setTestStep("Então confirmo o acesso à página Drag and Drop");
     }
 
     @And("arrasto o componente A para a posição do componente B")
@@ -27,7 +27,7 @@ public class DragAndDropSteps {
         page.arrastarElementoAParaElementoB("DragAndDrop_A.png", "DragAndDrop_B.png");
         Assert.assertEquals(page.getExpectedTextBoxB(), page.getTextBoxA());
         Assert.assertEquals(page.getExpectedTextBoxA(), page.getTextBoxB());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E arrasto o componente 'A' para a posição do componente 'B'");
+        ReportManager.setTestStep("E arrasto o componente 'A' para a posição do componente 'B'");
     }
 
     

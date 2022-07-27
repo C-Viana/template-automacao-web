@@ -21,13 +21,13 @@ public class ContextMenuSteps {
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
         page.clickHotspotComponent();
         Assert.assertEquals(page.getAlertExpectedText(), page.getAlert().getText());
-        ReportManager.setTestStepOutContext(ReportManager.getScenario().getStatus(), "Então valido a exibição do alert");
+        ReportManager.setTestStepOutBrowser("Então valido a exibição do alert");
     }
 
     @And("encerro o alert")
     public void encerroAlert() {
         page.getAlert().dismiss();
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E encerro o alert");
+        ReportManager.setTestStep("E encerro o alert");
     }
 
     

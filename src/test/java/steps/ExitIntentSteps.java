@@ -21,7 +21,7 @@ public class ExitIntentSteps {
         Assert.assertEquals(page.getTitleTextExpected(), page.getTitle().getText());
         Assert.assertEquals(page.getBodyContentTextExpected(), page.getBodyContent().getText());
         page.moverMouseForaDaTela();
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E mover o mouse para fora do viewport");
+        ReportManager.setTestStep("E mover o mouse para fora do viewport");
     }
 
     @Then("confirmo que o modal de saída é exibido")
@@ -31,7 +31,7 @@ public class ExitIntentSteps {
         Assert.assertEquals(page.getModalHeaderTextExpected(), page.getModalHeader().getText().trim());
         Assert.assertEquals(page.getModalBodyTextExpected(), page.getModalBody().getText().trim());
         Assert.assertEquals(page.getModalFooterTextExpected(), page.getModalFooter().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então confirmo que o modal de saída é exibido");
+        ReportManager.setTestStep("Então confirmo que o modal de saída é exibido");
     }
 
 

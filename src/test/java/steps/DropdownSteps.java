@@ -18,7 +18,7 @@ public class DropdownSteps {
     @Then("confirmo o acesso à página Dropdown")
     public void confirmoAcessPaginaDropdown() {
         Assert.assertEquals(page.getExpectedTextTitle(), page.getTitle().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então confirmo o acesso à página Drag and Drop");
+        ReportManager.setTestStep("Então confirmo o acesso à página Drag and Drop");
     }
 
     @And("seleciono a opção {string}")
@@ -27,7 +27,7 @@ public class DropdownSteps {
         page.getSelect().selectByVisibleText(opt);
         Assert.assertEquals( (opt.endsWith("1")) ? page.getExpectedTextOption1() : page.getExpectedTextOption2(), 
                 page.getSelect().getFirstSelectedOption().getText());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E seleciono a opção "+opt);
+        ReportManager.setTestStep("E seleciono a opção "+opt);
     }
 
     

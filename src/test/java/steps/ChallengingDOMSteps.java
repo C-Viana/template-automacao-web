@@ -19,7 +19,7 @@ public class ChallengingDOMSteps {
     @Then("confirmo o acesso à página Challenging DOM")
     public void confirmoAcessoPaginaChallengingDOM() {
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então confirmo o acesso à página Challenging DOM");
+        ReportManager.setTestStep("Então confirmo o acesso à página Challenging DOM");
     }
 
     @And("valido o conteúdo do canvas")
@@ -27,20 +27,20 @@ public class ChallengingDOMSteps {
         String test = page.getTextoDoCanvas();
         Assert.assertNotNull(test);
         ReportManager.setTestLog("Texto identificado pelo canvas: " + test);
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E valido o conteúdo do canvas");
+        ReportManager.setTestStep("E valido o conteúdo do canvas");
     }
 
     @Then("clico no botão {string}")
     public void clicoNoBotaoCor(String cor) {
         page.clickButtonByColor(cor);
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então clico no botão "+cor);
+        ReportManager.setTestStep("Então clico no botão "+cor);
     }
 
     @Then("capturo a tabela da página")
     public void capturoATabelaPagina() {
         WebElement[][] table = page.getTableValues(page.getTableRowsCount(), page.getTableColsCount());
         page.printTable(table, page.getTableRowsCount(), page.getTableColsCount());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então capturo a tabela da página");
+        ReportManager.setTestStep("Então capturo a tabela da página");
     }
 
 }

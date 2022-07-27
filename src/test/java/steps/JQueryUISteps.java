@@ -24,7 +24,7 @@ public class JQueryUISteps {
         Assert.assertEquals(page.getItemPDFTextExpected(), page.getItemPDF().getText().trim());
         Assert.assertEquals(page.getItemCSVTextExpected(), page.getItemCSV().getText().trim());
         Assert.assertEquals(page.getItemExcelTextExpected(), page.getItemExcel().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então verifico as opções de download disponíveis");
+        ReportManager.setTestStep("Então verifico as opções de download disponíveis");
     }
 
 

@@ -22,7 +22,7 @@ public class JavaScriptAlertsSteps {
         Assert.assertEquals("I am a JS Alert", page.getCurrentAlert().getText().trim());
         page.getCurrentAlert().accept();
         Assert.assertEquals(page.getExpectedTxtResultTextAlert(), page.getTxtResultText().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então interajo com o alerta");
+        ReportManager.setTestStep("Então interajo com o alerta");
     }
 
     @Then("clico em OK no alerta de confirmação")
@@ -33,7 +33,7 @@ public class JavaScriptAlertsSteps {
         Assert.assertEquals("I am a JS Confirm", page.getCurrentAlert().getText().trim());
         page.getCurrentAlert().accept();
         Assert.assertEquals(page.getExpectedTxtResultTextConfirmOK(), page.getTxtResultText().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então clico em OK no alerta de confirmação");
+        ReportManager.setTestStep("Então clico em OK no alerta de confirmação");
     }
 
     @Then("clico em CANCEL no alerta de confirmação")
@@ -44,7 +44,7 @@ public class JavaScriptAlertsSteps {
         Assert.assertEquals("I am a JS Confirm", page.getCurrentAlert().getText().trim());
         page.getCurrentAlert().dismiss();
         Assert.assertEquals(page.getExpectedTxtResultConfirmCancel(), page.getTxtResultText().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então clico em CANCEL no alerta de confirmação");
+        ReportManager.setTestStep("Então clico em CANCEL no alerta de confirmação");
     }
 
     @Then("clico em OK no alerta de prompt após digitar {string}")
@@ -56,7 +56,7 @@ public class JavaScriptAlertsSteps {
         page.getCurrentAlert().sendKeys(input);
         page.getCurrentAlert().accept();
         Assert.assertEquals(page.getExpectedTxtResultPromptText() + input, page.getTxtResultText().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então clico em OK no alerta de prompt após digitar "+input);
+        ReportManager.setTestStep("Então clico em OK no alerta de prompt após digitar "+input);
     }
 
     @Then("clico em CANCEL no alerta de prompt")
@@ -67,7 +67,7 @@ public class JavaScriptAlertsSteps {
         Assert.assertEquals("I am a JS prompt", page.getCurrentAlert().getText().trim());
         page.getCurrentAlert().dismiss();
         Assert.assertEquals(page.getExpectedTxtResultPromptNull(), page.getTxtResultText().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "clico em CANCEL no alerta de prompt");
+        ReportManager.setTestStep("clico em CANCEL no alerta de prompt");
     }
 
 

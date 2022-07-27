@@ -23,7 +23,7 @@ public class HoverSteps {
             Assert.assertEquals(page.getProfileNameExpected()+(i+1), page.getProfileNames().get(i).getText().trim());
             Assert.assertEquals(page.getProfileLinksTextExpected(), page.getProfileLinks().get(i).getText().trim());
         }
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então realizo a identificação dos cards de perfil");
+        ReportManager.setTestStep("Então realizo a identificação dos cards de perfil");
     }
 
 

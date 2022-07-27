@@ -23,7 +23,7 @@ public class DisappearingElementsSteps {
         Assert.assertEquals(page.getBtnAboutTextExpected(), page.getBtnAbout().getText().trim());
         Assert.assertEquals(page.getBtnContactUsTextExpected(), page.getBtnContactUs().getText().trim());
         Assert.assertEquals(page.getBtnPortfolioTextExpected(), page.getBtnPortfolio().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então confirmo o acesso à página Disapearing Elements");
+        ReportManager.setTestStep("Então confirmo o acesso à página Disapearing Elements");
     }
 
     @And("valido que o botão Gallery é exibido após atualização")
@@ -42,7 +42,7 @@ public class DisappearingElementsSteps {
                 page.atualizarTela();
         }
         Assert.assertEquals(page.getBtnGalleryTextExpected(), page.getBtnGallery().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E valido as opções disponíveis");
+        ReportManager.setTestStep("E valido as opções disponíveis");
     }
 
     @And("valido que o botão Gallery não é exibido após atualização")
@@ -62,7 +62,7 @@ public class DisappearingElementsSteps {
                 break;
         }
         Assert.assertFalse("Botão 'Gallery' está visível após atualização da página", page.btnGaleriaIsVisible());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E valido as opções disponíveis");
+        ReportManager.setTestStep("E valido as opções disponíveis");
     }
     
 

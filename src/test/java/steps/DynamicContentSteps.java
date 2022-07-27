@@ -18,7 +18,7 @@ public class DynamicContentSteps {
     @Then("confirmo o acesso à página Dynamic Content")
     public void confirmoAcessPaginaDynamicContent() {
         Assert.assertEquals(page.getExpectedTextTitle(), page.getTitle().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então confirmo o acesso à página Dynamic Content");
+        ReportManager.setTestStep("Então confirmo o acesso à página Dynamic Content");
     }
 
     @And("valido conteúdo aleatório")
@@ -31,7 +31,7 @@ public class DynamicContentSteps {
             Assert.assertTrue( "URL da imagem "+i+" não corresponde aos valores esperados.", page.imageUrlMatches(oldImages[i]) );
         }
 
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E valido conteúdo aleatório");
+        ReportManager.setTestStep("E valido conteúdo aleatório");
     }
 
     @And("valido conteúdo estático")
@@ -55,7 +55,7 @@ public class DynamicContentSteps {
             Assert.assertTrue("URL da imagem " + i + " não corresponde aos valores esperados.", page.imageUrlMatches(oldImages[i]));
         }
         System.out.println();
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E valido conteúdo estático");
+        ReportManager.setTestStep("E valido conteúdo estático");
     }
 
     

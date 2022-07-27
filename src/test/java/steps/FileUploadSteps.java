@@ -18,7 +18,7 @@ public class FileUploadSteps {
     public void realizoOUploadDeUmArquivo() {
         Assert.assertEquals(page.getTitleTextExpected(), page.getTitle().getText().trim());
         Assert.assertEquals(page.getBodyTextExpected(), page.getBody().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Página para upload de arquivo acessada.");
+        ReportManager.setTestStep("Página para upload de arquivo acessada.");
         
         //General.clickByCoordinates(page.getInputEscolherArquivo());
         page.siculixClicarNoComponente("FileUploader_0.png");
@@ -26,13 +26,13 @@ public class FileUploadSteps {
         page.siculixDigitarTexto(System.getProperty("user.dir") + "\\uploads");
         page.siculixTeclarEnter();
         page.siculixClicarNoComponente("FileUploader_2.png");
-        ReportManager.setTestStepOutContext(ReportManager.getScenario().getStatus(), "Janela para seleção de arquivo aberta");
+        ReportManager.setTestStepOutBrowser("Janela para seleção de arquivo aberta");
         page.siculixClicarNoComponente("FileUploader_3.png");
 
         page.getBtnUpload().click();
         Assert.assertEquals(page.getTitleTextExpectedFileUploaded(), page.getTitle().getText().trim());
         Assert.assertEquals("_uploadImageMoon.jpg", page.getUploadedFilesNames().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então realizo o upload de um arquivo");
+        ReportManager.setTestStep("Então realizo o upload de um arquivo");
     }
 
 

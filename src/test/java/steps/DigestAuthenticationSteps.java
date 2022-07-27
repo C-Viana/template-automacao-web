@@ -17,20 +17,20 @@ public class DigestAuthenticationSteps {
     @Then("realizo a autenticação por digest")
     public void realizoAutenticacaoPorDigest() {
         page.authenticateByBasicDigest("admin", "admin");
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "Então realizo a autenticação por digest");
+        ReportManager.setTestStep("Então realizo a autenticação por digest");
     }
 
     @And("valido falha de autenticação via digest")
     public void validoFalhaAutenticacao() {
         Assert.assertEquals(page.getTextExpectedPageNotAuthorized(), page.getTextPageNotAuthorized().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E valido falha de autenticação via digest");
+        ReportManager.setTestStep("E valido falha de autenticação via digest");
     }
 
     @And("valido sucesso de autenticação via digest")
     public void validoSucessoAutenticacao() {
         Assert.assertEquals(page.getTextExpectedPageTitle(), page.getPageTitle().getText().trim());
         Assert.assertEquals(page.getTextExpectedPageInformation(), page.getPageInformation().getText().trim());
-        ReportManager.setTestStep(ReportManager.getScenario().getStatus(), "E valido sucesso de autenticação via digest");
+        ReportManager.setTestStep("E valido sucesso de autenticação via digest");
     }
 
 }

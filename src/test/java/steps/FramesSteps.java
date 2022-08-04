@@ -17,13 +17,14 @@ public class FramesSteps {
 
     @And("acessar a página de frameset")
     public void acessarPaginaFrameset() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getLinkNestedFramesTextExpected(), page.getLinkNestedFrames().getText().trim());
         page.getLinkNestedFrames().click();
-        ReportManager.setTestStep("E acessar a página de frameset");
     }
 
     @Then("identifico cada um dos frames")
     public void identificoCadaFrame() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         page.enterContextFrameTop();
         Assert.assertEquals("Frame TOP deveria ter 3 frames internos.", 3, page.getQuantityFramesTop() );
 
@@ -45,18 +46,18 @@ public class FramesSteps {
         Assert.assertEquals("BOTTOM", page.getTextFromFrameBody());
 
         page.returnDefaultContext();
-        ReportManager.setTestStep("Então identifico cada um dos frames");
     }
 
     @And("acessar a página de iFrame")
     public void acessarPaginaIFrame() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getLinkIFramesTextExpected(), page.getLinkIFrames().getText().trim());
         page.getLinkIFrames().click();
-        ReportManager.setTestStep("E acessar a página de iFrame");
     }
 
     @Then("interajo com o componente iFrame")
     public void interajoComponenteIFrame() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getIFrameTitleTextExpected(), page.getIFrameTitle().getText().trim());
         page.enterContextIFrame();
         page.getIFrameParagraph().click();
@@ -64,7 +65,6 @@ public class FramesSteps {
         page.getIFrameParagraph().sendKeys("FRASE DE TESTE BEM SUCEDIDO!");
 
         page.returnDefaultContext();
-        ReportManager.setTestStep("Então interajo com o componente iFrame");
     }
 
 

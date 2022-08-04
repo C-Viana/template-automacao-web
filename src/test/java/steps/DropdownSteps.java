@@ -17,17 +17,16 @@ public class DropdownSteps {
 
     @Then("confirmo o acesso à página Dropdown")
     public void confirmoAcessPaginaDropdown() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getExpectedTextTitle(), page.getTitle().getText().trim());
-        ReportManager.setTestStep("Então confirmo o acesso à página Drag and Drop");
     }
 
     @And("seleciono a opção {string}")
     public void selecionoOpcao(String opt) {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getExpectedTextOptionDefault(), page.getSelect().getFirstSelectedOption().getText());
         page.getSelect().selectByVisibleText(opt);
-        Assert.assertEquals( (opt.endsWith("1")) ? page.getExpectedTextOption1() : page.getExpectedTextOption2(), 
-                page.getSelect().getFirstSelectedOption().getText());
-        ReportManager.setTestStep("E seleciono a opção "+opt);
+        Assert.assertEquals( (opt.endsWith("1")) ? page.getExpectedTextOption1() : page.getExpectedTextOption2(), page.getSelect().getFirstSelectedOption().getText());
     }
 
     

@@ -612,7 +612,7 @@ public class BasePage {
      */
     public static void waitFor( Integer timeInSeconds ) {
         try {
-        	TimeUnit.MINUTES.sleep( (timeInSeconds == null) ? StaticResources.DEFAULT_WAIT_TIME : timeInSeconds );
+        	TimeUnit.SECONDS.sleep( (timeInSeconds == null) ? StaticResources.DEFAULT_WAIT_TIME : timeInSeconds );
 //            Thread.sleep( (timeInSeconds == null ) ? StaticResources.DEFAULT_WAIT_TIME : timeInSeconds*1000 );
             }
         catch (InterruptedException e) {

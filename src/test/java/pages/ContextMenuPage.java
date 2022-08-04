@@ -37,11 +37,20 @@ public class ContextMenuPage extends ContextMenu {
     }
 
     public Alert getAlert() {
-        return BasePage.getAlert(5);
+        try {
+            return BasePage.getAlert(5);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public String getAlertExpectedText() {
         return txtExpectedAlertBody;
+    }
+
+    public void setToDefaultContext() {
+        BasePage.setDefaultContext();
+        BasePage.waitFor(2);
     }
     
 }

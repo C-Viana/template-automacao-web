@@ -17,12 +17,13 @@ public class DynamicContentSteps {
 
     @Then("confirmo o acesso à página Dynamic Content")
     public void confirmoAcessPaginaDynamicContent() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getExpectedTextTitle(), page.getTitle().getText().trim());
-        ReportManager.setTestStep("Então confirmo o acesso à página Dynamic Content");
     }
 
     @And("valido conteúdo aleatório")
     public void validoConteudoAleatorio() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         String[] oldImages = page.getImagesURL();
         Object[] oldTexts = page.getTexts();
         page.recarregarTela();
@@ -30,12 +31,11 @@ public class DynamicContentSteps {
             Assert.assertFalse( "Textos comparados no parágrafo "+i+" são iguais.", oldTexts[i].toString().equalsIgnoreCase(page.getPhrases().get(i).getText().trim()) );
             Assert.assertTrue( "URL da imagem "+i+" não corresponde aos valores esperados.", page.imageUrlMatches(oldImages[i]) );
         }
-
-        ReportManager.setTestStep("E valido conteúdo aleatório");
     }
 
     @And("valido conteúdo estático")
     public void validoConteudoEstatico() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         page.getLinkClickHere().click();
 
         String[] oldImages = page.getImagesURL();
@@ -55,7 +55,6 @@ public class DynamicContentSteps {
             Assert.assertTrue("URL da imagem " + i + " não corresponde aos valores esperados.", page.imageUrlMatches(oldImages[i]));
         }
         System.out.println();
-        ReportManager.setTestStep("E valido conteúdo estático");
     }
 
     

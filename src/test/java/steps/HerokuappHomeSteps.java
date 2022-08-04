@@ -16,169 +16,169 @@ public class HerokuappHomeSteps {
     
     @Given("que abri a página Herokuapp")
     public void queAbriAPaginaHerokuapp() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getTitleExpected(), home.getTitle());
-        ReportManager.setTestStep("Dado que abri a página HerokuApp");
     }
 
     @When("acessar o link AB Testing")
     public void acessarOLinkABTesting() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextABTestingExpected(), home.getABTestingLinkText());
         home.clickABTestingLink();
-        ReportManager.setTestStep("Quando acessar o link A/B Testing");
     }
 
     @When("acessar o link Add-Remove Elements")
     public void acessarOLinkAddRemoveElements() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextAddRemoveElementsExpected(), home.getAddRemoveElementsText());
         home.clickAddRemoveElements();
-        ReportManager.setTestStep("Quando acessar o link Add/Remove Elements");
     }
 
     @When("acessar o link Basic Auth")
     public void acessarOLinkBasicAuth() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextBasicAuthExpected(), home.getBasicAuthText());
         home.clickBasicAuth();
-        ReportManager.setTestStep("Quando acessar o link Basic Auth");
     }
 
     @When("acessar o link Broken Images")
     public void acessarOLinkBrokenImages() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextBrokenImagesExpected(), home.getBrokenImagesText());
         home.clickBrokenImages();
-        ReportManager.setTestStep("Quando acessar o link Broken Images");
     }
 
     @When("acessar o link Challenging DOM")
     public void acessarOLinkChallengingDOM() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextChallengingDOMExpected(), home.getChallengingDOMText());
         home.clickChallengingDOM();
-        ReportManager.setTestStep("Quando acessar o link Challenging DOM");
     }
 
     @When("acessar o link Checkboxes")
     public void acessarOLinkCheckboxes() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextCheckboxesExpected(), home.getCheckboxesText());
         home.clickCheckboxes();
-        ReportManager.setTestStep("Quando acessar o link Challenging DOM");
     }
 
     @When("acessar o link Context Menu")
     public void acessarOLinkContextMenu() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextContextMenuExpected(), home.getContextMenuText());
         home.clickContextMenu();
-        ReportManager.setTestStep("Quando acessar o link Context Menu");
     }
 
     @When("acessar o link Digest Authentication")
     public void acessarOLinkDigestAuthentication() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextDigestAuthenticationExpected(), home.getDigestAuthenticationText());
         home.clickDigestAuthentication();
-        ReportManager.setTestStep("Quando acessar o link Digest Authentication");
     }
 
     @When("acessar o link Disappearing Elements")
     public void acessarOLinkDisappearingElements() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextDisappearingElementsExpected(), home.getDisappearingElementsText());
         home.clickDisappearingElements();
-        ReportManager.setTestStep("Quando acessar o link Disappearing Elements");
     }
 
     @When("acessar o link Drag and Drop")
     public void acessarOLinkDragAndDrop() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextDragAndDropExpected(), home.getDragAndDropText());
         home.clickDragAndDrop();
-        ReportManager.setTestStep("Quando acessar o link Drag and Drop");
     }
 
     @When("acessar o link Dropdown")
     public void acessarOLinkDropdown() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextDropdownExpected(), home.getDropdownText());
         home.clickDropdown();
-        ReportManager.setTestStep("Quando acessar o link Dropdown");
     }
 
     @When("acessar o link Dynamic Content")
     public void acessarOLinkDynamicContent() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextDynamicContentExpected(), home.getDynamicContentText());
         home.clickDynamicContent();
-        ReportManager.setTestStep("Quando acessar o link Dynamic Content");
     }
 
     @When("acessar o link Dynamic Controls")
     public void acessarOLinkDynamicControls() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextDynamicControlsExpected(), home.getDynamicControlsText());
         home.clickDynamicControls();
-        ReportManager.setTestStep("Quando acessar o link Dynamic Controls");
     }
 
     @When("acessar o link Dynamic Loading")
     public void acessarOLinkDynamicLoading() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextDynamicLoadingExpected(), home.getDynamicLoadingText());
         home.clickDynamicLoading();
-        ReportManager.setTestStep("Quando acessar o link Dynamic Loading");
     }
 
     @When("acessar o link Entry Ad")
     public void acessarOLinkEntryAd() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextEntryAdExpected(), home.getEntryAdText());
         home.clickEntryAd();
-        ReportManager.setTestStep("Quando acessar o link Entry Ad");
     }
 
     @When("acessar o link Exit Intent")
     public void acessarOLinkExitIntent() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextExitIntentExpected(), home.getExitIntentText());
         home.clickExitIntent();
-        ReportManager.setTestStep("Quando acessar o link Exit Intent");
     }
 
     @When("acessar o link File Download")
     public void acessarOLinkFileDownload() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextFileDownloadExpected(), home.getFileDownloadText());
         home.clickFileDownload();
-        ReportManager.setTestStep("Quando acessar o link File Download");
     }
 
     @When("acessar o link File Upload")
     public void acessarOLinkFileUpload() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextFileUploadExpected(), home.getFileUploadText());
         home.clickFileUpload();
-        ReportManager.setTestStep("Quando acessar o link File Upload");
     }
 
     @When("acessar o link Frames")
     public void acessarOLinkFrames() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextFramesExpected(), home.getFramesText());
         home.clickFrames();
-        ReportManager.setTestStep("Quando acessar o link Frames");
     }
 
     @When("acessar o link Horizontal Slider")
     public void acessarOLinkHorizontalSlider() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextHorizontalSliderExpected(), home.getHorizontalSliderText());
         home.clickHorizontalSlider();
-        ReportManager.setTestStep("Quando acessar o link Horizontal Slider");
     }
 
     @When("acessar o link Hover")
     public void acessarOLinkHover() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextHoverExpected(), home.getHoverText());
         home.clickHover();
-        ReportManager.setTestStep("Quando acessar o link Hover");
     }
 
     @When("acessar o link JQuery UI")
     public void acessarOLinkJQueryUI() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextJQueryUIExpected(), home.getJQueryUIText());
         home.clickJQueryUI();
-        ReportManager.setTestStep("Quando acessar o link JQuery UI");
     }
 
     @When("acessar o link JavaScript Alerts")
     public void acessarOLinkJavaScriptAlerts() {
+        ReportManager.setStepName(new Object() {}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(home.getLinkTextJavaScriptAlertsExpected(), home.getJavaScriptAlertsText());
         home.clickJavaScriptAlerts();
-        ReportManager.setTestStep("Quando acessar o link JavaScript Alerts");
     }
 
 }

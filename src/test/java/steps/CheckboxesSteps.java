@@ -17,28 +17,28 @@ public class CheckboxesSteps {
 
     @Then("confirmo o acesso à página Checkboxes")
     public void confirmoAcessoPaginaBrokenImages() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
-        ReportManager.setTestStep("Então confirmo o acesso à página Checkboxes");
     }
 
     @And("valido as opções disponíveis")
     public void validoImagensTela() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         page.listCheckboxOptions();
-        ReportManager.setTestStep("E valido as opções disponíveis");
     }
 
     @Then("marco o checkbox {string}")
     public void marcoCheckbox(String opt) {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString().replace("{string}", opt));
         page.clickCheckBox(false, opt);
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
-        ReportManager.setTestStep("Então marco o checkbox " + opt);
     }
 
     @Then("desmarco o checkbox {string}")
     public void desmarcoCheckbox(String opt) {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString().replace("{string}", opt));
         page.clickCheckBox(true, opt);
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
-        ReportManager.setTestStep("Então desmarco o checkbox " + opt);
     }
 
     

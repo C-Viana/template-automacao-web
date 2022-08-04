@@ -17,17 +17,16 @@ public class DragAndDropSteps {
 
     @Then("confirmo o acesso à página Drag and Drop")
     public void confirmoAcessPaginaDragAndDrop() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getExpectedTextTitle(), page.getTitle().getText().trim());
-        ReportManager.setTestStep("Então confirmo o acesso à página Drag and Drop");
     }
 
     @And("arrasto o componente A para a posição do componente B")
     public void arrastoComponenteAParaPosicaoComponenteB() {
-//    	BasePage.dragElementTo(page.getBoxA(), page.getBoxB());
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         page.arrastarElementoAParaElementoB("DragAndDrop_A.png", "DragAndDrop_B.png");
         Assert.assertEquals(page.getExpectedTextBoxB(), page.getTextBoxA());
         Assert.assertEquals(page.getExpectedTextBoxA(), page.getTextBoxB());
-        ReportManager.setTestStep("E arrasto o componente 'A' para a posição do componente 'B'");
     }
 
     

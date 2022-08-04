@@ -20,7 +20,7 @@ Feature: JavaScriptAlerts
         Then clico em CANCEL no alerta de confirmação
 
     @Test29D
-    Scenario: Clicar CANCEL no alerta tipo prompt
+    Scenario: Clicar OK no alerta tipo prompt
         Given que abri a página Herokuapp
         When acessar o link JavaScript Alerts
         Then clico em OK no alerta de prompt após digitar "testePrompt"

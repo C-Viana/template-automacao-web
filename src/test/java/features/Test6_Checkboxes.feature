@@ -1,4 +1,4 @@
-
+@Test6
 Feature: Checkboxes
 @Test6A
     Scenario: Validar as opções de checkboxes disponíveis

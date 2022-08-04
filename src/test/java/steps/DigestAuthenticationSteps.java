@@ -16,21 +16,21 @@ public class DigestAuthenticationSteps {
 
     @Then("realizo a autenticação por digest")
     public void realizoAutenticacaoPorDigest() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         page.authenticateByBasicDigest("admin", "admin");
-        ReportManager.setTestStep("Então realizo a autenticação por digest");
     }
 
     @And("valido falha de autenticação via digest")
     public void validoFalhaAutenticacao() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getTextExpectedPageNotAuthorized(), page.getTextPageNotAuthorized().getText().trim());
-        ReportManager.setTestStep("E valido falha de autenticação via digest");
     }
 
     @And("valido sucesso de autenticação via digest")
     public void validoSucessoAutenticacao() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getTextExpectedPageTitle(), page.getPageTitle().getText().trim());
         Assert.assertEquals(page.getTextExpectedPageInformation(), page.getPageInformation().getText().trim());
-        ReportManager.setTestStep("E valido sucesso de autenticação via digest");
     }
 
 }

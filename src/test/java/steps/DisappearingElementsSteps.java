@@ -17,17 +17,18 @@ public class DisappearingElementsSteps {
 
     @Then("confirmo o acesso à Disapearing Elements")
     public void confirmoAcessoDisapearingElements() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getTitleExpected(), page.getTitle().getText().trim());
         Assert.assertEquals(page.getDescriptionExpected(), page.getDescription().getText().trim());
         Assert.assertEquals(page.getBtnHomeTextExpected(), page.getBtnHome().getText().trim());
         Assert.assertEquals(page.getBtnAboutTextExpected(), page.getBtnAbout().getText().trim());
         Assert.assertEquals(page.getBtnContactUsTextExpected(), page.getBtnContactUs().getText().trim());
         Assert.assertEquals(page.getBtnPortfolioTextExpected(), page.getBtnPortfolio().getText().trim());
-        ReportManager.setTestStep("Então confirmo o acesso à página Disapearing Elements");
     }
 
     @And("valido que o botão Gallery é exibido após atualização")
     public void validoBotaoGalleryExibidoAposAtualizacao() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
     	for (int i = 0; i < 3; i++) {
             if (page.btnGaleriaIsVisible())
                 page.atualizarTela();
@@ -42,11 +43,11 @@ public class DisappearingElementsSteps {
                 page.atualizarTela();
         }
         Assert.assertEquals(page.getBtnGalleryTextExpected(), page.getBtnGallery().getText().trim());
-        ReportManager.setTestStep("E valido as opções disponíveis");
     }
 
     @And("valido que o botão Gallery não é exibido após atualização")
     public void validoBotaoGalleryNaoExibidoAposAtualizacao() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         for (int i = 0; i < 5; i++) {
             if (!page.btnGaleriaIsVisible())
             	page.atualizarTela();
@@ -62,7 +63,6 @@ public class DisappearingElementsSteps {
                 break;
         }
         Assert.assertFalse("Botão 'Gallery' está visível após atualização da página", page.btnGaleriaIsVisible());
-        ReportManager.setTestStep("E valido as opções disponíveis");
     }
     
 

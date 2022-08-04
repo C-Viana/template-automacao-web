@@ -16,34 +16,34 @@ public class BasicAuthSteps {
     
     @Then("realizo a autenticação pelo alert do navegador")
     public void realizoAutenticacaoPeloAlert() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         page.authenticateByKeyboard("admin", "admin");
-        ReportManager.setTestStep("Então realizo a autenticação pelo alert do navegador");
         page.teclarEnter();
     }
 
     @Then("cancelo a autenticação")
     public void realizoAutenticacaoComDadosInvalidos() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         page.cancelarAutenticacao();
-        ReportManager.setTestStep("Então cancelo a autenticação");
     }
 
     @Then("realizo a autenticação pela URL")
     public void realizoAutenticacaoPelaURL() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         page.authenticateByURL("admin", "admin");
-        ReportManager.setTestStep("Então realizo a autenticação pela URL");
     }
 
     @And("valido a tela a tela com falha de autenticação")
     public void validoFalhaAutenticacao() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getTextExpectedPageNotAuthorized(), page.getTextPageNotAuthorized().getText().trim());
-        ReportManager.setTestStep("E valido a tela a tela com falha de autenticação");
     }
 
     @And("valido a tela a tela de autenticação bem sucedida")
     public void validoSucessoAutenticacao() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getTextExpectedPageTitle(), page.getPageTitle().getText().trim());
         Assert.assertEquals(page.getTextExpectedPageInformation(), page.getPageInformation().getText().trim());
-        ReportManager.setTestStep("E valido a tela a tela de autenticação bem sucedida");
     }
 
 }

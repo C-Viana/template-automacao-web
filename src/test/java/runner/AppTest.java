@@ -14,7 +14,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
     monochrome = true,
     stepNotifications = true,
     dryRun = true
-//    ,tags = "@Test22B"
+    // ,tags = "@Test12"
 )
 @RunWith(Cucumber.class)
 public class AppTest 

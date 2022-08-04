@@ -36,6 +36,7 @@ public class ReportManager {
     
     private static ExtentReports reporter;
     private static ExtentTest test;
+    private static String step;
     private static int iterator = 0;
     private static String ROOT_PATH = "";
     private static String images_path = "";
@@ -126,6 +127,40 @@ public class ReportManager {
     }
     
     /**
+     * Este método captura o nome da step name e atribui para a variável
+     * reporter.ReportManager.step. <br>
+     * O valor capturado será utilizado pelo método
+     * reporter.ReportManager.setTestStep() para registrar o status
+     * de execução do step atual. <br>
+     * Recomenda-se utilizar esse método em conjunto com a anotação
+     * io.cucumber.java.AfterStep. <br>
+     * Se for o caso, utilize em cada step a implementação abaixo para que
+     * o nome do step seja capturado no ato da execução de forma automatizada.
+     * <br>
+     * 
+     * <pre>
+     * {@code}
+     * ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
+     * </pre>
+     * 
+     * @param stepName
+     */
+    public static void setStepName(String stepName) {
+        step = "";
+        if (stepName.contains("Given"))
+            step = "Dado ";
+        else if (stepName.contains("And"))
+            step = "E ";
+        else if (stepName.contains("When"))
+            step = "Quando ";
+        else if (stepName.contains("Then"))
+            step = "Então ";
+        else if (stepName.contains("But"))
+            step = "Mas ";
+        step += stepName.replace("\"", "").replace(")", "").split("=")[1];
+    }
+    
+    /**
      * Iniciará a instância de reporte para o(s) teste(s) em execução.
      * <br>
      * Este método deve ser chamado logo após o método ReportManager.setResultPath().3
@@ -175,21 +210,33 @@ public class ReportManager {
         reporter = null;
     }
     
-    /**
-     * Faz uma imagem de captura de tela e adiciona o status atual do passo em execução informado através do recurso io.cucumber.java.Scenario.
-     * <br>
-     * Como parâmetro, pode ser informado um texto personalizado que sirva de explicação à imagem e às validações realizadas.
-     * <br>
-     * Este método pode ser utilizado em qualquer ponto da execução do teste que se queira registrar uma evidência de teste.
-     * <br>
-     * @param stepLog
-     */
-    public static void setTestStep( String stepLog ) {
+    
+    public static void setTestStep() {
         LogStatus stat = ( 
         		LogStatus.valueOf(getScenario().getStatus().name().replace("ED", "")) != null ) 
         		? LogStatus.valueOf(getScenario().getStatus().name().replace("ED", "")) 
         				: LogStatus.valueOf("error");
-        test.log( stat, stepLog, test.addScreenCapture(getShot()) );
+        test.log( stat, step, test.addScreenCapture(getShot()) );
+    }
+
+    /**
+     * Faz uma imagem de captura de tela e adiciona o status atual do passo em
+     * execução informado através do recurso io.cucumber.java.Scenario.
+     * <br>
+     * Como parâmetro, pode ser informado um texto personalizado que sirva de
+     * explicação à imagem e às validações realizadas.
+     * <br>
+     * Este método pode ser utilizado em qualquer ponto da execução do teste que se
+     * queira registrar uma evidência de teste.
+     * <br>
+     * 
+     * @param stepLog
+     */
+    public static void setTestStep(String stepLog) {
+        LogStatus stat = (LogStatus.valueOf(getScenario().getStatus().name().replace("ED", "")) != null)
+                ? LogStatus.valueOf(getScenario().getStatus().name().replace("ED", ""))
+                : LogStatus.valueOf("error");
+        test.log(stat, stepLog, test.addScreenCapture(getShot()));
     }
     
     /**

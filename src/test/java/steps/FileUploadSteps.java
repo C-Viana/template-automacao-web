@@ -16,6 +16,7 @@ public class FileUploadSteps {
 
     @Then("realizo o upload de um arquivo")
     public void realizoOUploadDeUmArquivo() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getTitleTextExpected(), page.getTitle().getText().trim());
         Assert.assertEquals(page.getBodyTextExpected(), page.getBody().getText().trim());
         ReportManager.setTestStep("Página para upload de arquivo acessada.");
@@ -32,7 +33,6 @@ public class FileUploadSteps {
         page.getBtnUpload().click();
         Assert.assertEquals(page.getTitleTextExpectedFileUploaded(), page.getTitle().getText().trim());
         Assert.assertEquals("_uploadImageMoon.jpg", page.getUploadedFilesNames().getText().trim());
-        ReportManager.setTestStep("Então realizo o upload de um arquivo");
     }
 
 

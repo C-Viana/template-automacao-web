@@ -1,4 +1,5 @@
 
+@testABTesting
 Feature: A/B Testing
     Scenario: Validar direcionamento à sessão A/B Testing
         Given que abri a página Herokuapp

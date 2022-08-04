@@ -16,6 +16,7 @@ public class HoverSteps {
 
     @Then("realizo a identificação dos cards de perfil")
     public void interajoComponenteIFrame() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getTitleTextExpected(), page.getTitle().getText().trim());
         for (int i = 0; i < 3; i++) {
             //General.moveMouseTo(page.getProfileCards().get(i).getLocation().x, page.getProfileCards().get(i).getLocation().y);
@@ -23,7 +24,6 @@ public class HoverSteps {
             Assert.assertEquals(page.getProfileNameExpected()+(i+1), page.getProfileNames().get(i).getText().trim());
             Assert.assertEquals(page.getProfileLinksTextExpected(), page.getProfileLinks().get(i).getText().trim());
         }
-        ReportManager.setTestStep("Então realizo a identificação dos cards de perfil");
     }
 
 

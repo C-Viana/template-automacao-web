@@ -1,4 +1,5 @@
 
+@Test5
 Feature: Challenging DOM
 
     Scenario: Validar reconhecimento do conteúdo canvas
@@ -7,7 +8,7 @@ Feature: Challenging DOM
         Then confirmo o acesso à página Challenging DOM
         And valido o conteúdo do canvas
 
-    Scenario: Clico no botão com a cor verde
+    Scenario: Clico no botão com a cor azul
         Given que abri a página Herokuapp
         When acessar o link Challenging DOM
         Then clico no botão "azul"
@@ -17,11 +18,11 @@ Feature: Challenging DOM
         When acessar o link Challenging DOM
         Then clico no botão "verde"
 
-    Scenario: Clico no botão com a cor verde
+    Scenario: Clico no botão com a cor vermelho
         Given que abri a página Herokuapp
         When acessar o link Challenging DOM
         Then clico no botão "vermelho"
-@test_5
+
     Scenario: Realizo uma leitura da tabela
         Given que abri a página Herokuapp
         When acessar o link Challenging DOM

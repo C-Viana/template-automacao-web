@@ -12,22 +12,23 @@ public class ContextMenuSteps {
     private ContextMenuPage page = null;
     
     public ContextMenuSteps() {
-
         page = new ContextMenuPage();
     }
 
     @Then("valido a exibição do alert ao clicar com o botão direito na área marcada")
     public void validoExibicaoAlertClicarDireitoAreaMarcada() {
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
         Assert.assertEquals(page.getExpectedTextTitle(), page.getCurrentTextTitle());
         page.clickHotspotComponent();
         Assert.assertEquals(page.getAlertExpectedText(), page.getAlert().getText());
-        ReportManager.setTestStepOutBrowser("Então valido a exibição do alert");
+        ReportManager.setTestStepOutBrowser("Validando abertura do alert.");
+        page.getAlert().dismiss();
     }
 
     @And("encerro o alert")
     public void encerroAlert() {
-        page.getAlert().dismiss();
-        ReportManager.setTestStep("E encerro o alert");
+        ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
+        Assert.assertTrue("Alert não deveria estar presente!", page.getAlert()==null);
     }
 
     

@@ -22,7 +22,6 @@ public class Driver {
 
     public static void close() {
         if( driver != null ) {
-            driver.close();
             driver.quit();
             driver = null;
         }

@@ -1,6 +1,7 @@
 @Test7
 Feature: Context Menu
-@Test7A
+    
+    @Test7A
     Scenario: Validar clique direito e exibição de alert
         Given que abri a página Herokuapp
         When acessar o link Context Menu

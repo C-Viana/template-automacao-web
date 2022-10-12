@@ -14,7 +14,7 @@ public class _Hooks {
 
     @BeforeAll
     public static void beforeAll() {
-        StaticResources.suite_test = true;
+        StaticResources.suite_test = false;
     }
 
     @AfterAll

@@ -19,7 +19,7 @@ public class StaticResources {
     /**
      * DIRETÓRIO NA MÁQUINA LOCAL ONDE ESTÁ O CHROMEDRIVER.
      */
-    public static final String CHROME_DRIVER = "C:\\Desenvolvimento\\WebDrivers\\chromedriver_103.exe";
+    public static final String CHROME_DRIVER = "C:\\Desenvolvimento\\WebDrivers\\chromedriver_106.exe";
 
     /**
      * LOCAL DE DESTINO PARA TESTES DE DOWNLOADS DE ARQUIVOS.

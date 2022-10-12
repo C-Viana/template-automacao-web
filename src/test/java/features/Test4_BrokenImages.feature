@@ -1,28 +1,28 @@
-@test_4
+@Test4
 Feature: Broken Images
 
-@test_4A
+    @Test4A
     Scenario: Validar o status de todas as imagens da página
         Given que abri a página Herokuapp
         When acessar o link Broken Images
         Then confirmo o acesso à página Broken Images
         And valido as imagens em tela
 
-@test_4B
+    @Test4B
     Scenario: Validar o status da imagem 1
         Given que abri a página Herokuapp
         When acessar o link Broken Images
         Then confirmo o acesso à página Broken Images
         And valido a imagem 1 em tela com status 404
 
-@test_4C
+    @Test4C
     Scenario: Validar o status da imagem 2
         Given que abri a página Herokuapp
         When acessar o link Broken Images
         Then confirmo o acesso à página Broken Images
         And valido a imagem 2 em tela com status 404
         
-@test_4D
+    @Test4D
     Scenario: Validar o status da imagem 3
         Given que abri a página Herokuapp
         When acessar o link Broken Images
